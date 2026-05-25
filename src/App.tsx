@@ -1,6 +1,7 @@
 import MainLayout from "./layout/main.layout";
 import { Routes, Route } from "react-router";
 import OverviewPage from "./feature/overview/overview.page";
+import AddCommunity from "./feature/overview/Add-Community/add-community.page";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
             <MainLayout>
               <Routes>
                 <Route path="" element={<OverviewPage />} />
+                <Route path="/add-community" element={<AddCommunity />} />
                 <Route path="*" element={<div>Page Not Found</div>} />
               </Routes>
             </MainLayout>

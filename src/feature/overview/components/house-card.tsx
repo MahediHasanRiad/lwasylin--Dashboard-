@@ -3,7 +3,7 @@ export default function HouseCard({ imageUrl, propertyId, location, beds, baths 
 
   return (
     // Outer card container with exact background color and border radius
-    <div className="w-full max-w-[480px] p-4 bg-[#e6eaef] rounded-[24px] shadow-lg font-sans overflow-hidden">
+    <div className="w-full max-w-[480px] p-4 my-4 bg-[#e6eaef] rounded-[24px] shadow-lg font-sans overflow-hidden">
       
       {/* Top Image Section (Dynamic URL and optimized aspect ratio) */}
       <div className="w-full aspect-[16/9] rounded-[20px] overflow-hidden">

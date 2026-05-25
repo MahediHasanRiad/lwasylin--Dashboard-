@@ -1,3 +1,4 @@
+import React from "react";
 import { Label } from "@/components/ui/label";
 import {
   Select,
@@ -6,40 +7,64 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import type { FAQType } from "@/feature/FAQ/FAQ.page";
+import { MoreVertical, type LucideIcon } from "lucide-react"; // Default fallback icon
 
 interface SelectType {
-    selectHandler: (data: FAQType ) => void;
-    defaultValue: FAQType
+  label?: string;
+  name: string;
+  selectHandler: (name: string, value: string) => void;
+  defaultValue?: string;
+  items: string[];
+  Icon?: LucideIcon | React.ComponentType<{ className?: string }>; // Optional icon prop
 }
 
-export function SelectField({selectHandler, defaultValue} : SelectType) {
+export function SelectField({
+  label,
+  name,
+  selectHandler,
+  defaultValue,
+  items,
+  Icon = MoreVertical, 
+}: SelectType) {
   return (
-    <div className="space-y-2" >
-      <Label htmlFor="username-select">Category</Label>
-      
-      <Select name="username" defaultValue={defaultValue} onValueChange={(value) => selectHandler(value as FAQType)}>
-        <SelectTrigger 
-          id="username-select" 
-          className="w-full bg-transparent border-gray-800 text-black focus:ring-secondary/50"
+    <div className="space-y-2">
+      {label ? (
+        <Label htmlFor={`${name}-select`}>{label}</Label>
+      ) : (
+        <span className="sr-only">Toggle options</span>
+      )}
+
+      <Select
+        name={name}
+        defaultValue={defaultValue}
+        onValueChange={(value) => selectHandler(name, value)}
+      >
+
+        <SelectTrigger
+          id={`${name}-select`}
+          className="w-10 h-10 p-0 flex items-center justify-center rounded-xl bg-transparent text-gray-700 hover:bg-gray-100 [&>svg]:hidden cursor-pointer transition-colors duration-150"
         >
-          {/* Displays the currently active value selection */}
-          <SelectValue placeholder="Select a user handle" />
+
+          <span>
+            <Icon className="w-5 h-5 shrink-0" />
+          </span>
+
+          <div className="hidden">
+            <SelectValue />
+          </div>
         </SelectTrigger>
-        
-        <SelectContent className="bg-card-bg-0 border-gray-800 text-white">
-          <SelectItem value="Buying" className="focus:bg-secondary-0 focus:text-black focus:bg-secondary-0">
-            Buying
-          </SelectItem>
-          <SelectItem value="Selling" className="focus:bg-bg-secondary-0 focus:text-black focus:bg-secondary-0">
-            Selling
-          </SelectItem>
-          <SelectItem value="Services" className="focus:bg-bg-secondary-0 focus:text-black focus:bg-secondary-0">
-            Services
-          </SelectItem>
-          <SelectItem value="TrustAndSafety" className="focus:bg-bg-secondary-0 focus:text-black focus:bg-secondary-0">
-            Trust & Safety 
-          </SelectItem>
+
+        <SelectContent align="end" className="bg-white border border-gray-200 shadow-md">
+          {items &&
+            items.map((item, i) => (
+              <SelectItem
+                key={i}
+                value={item}
+                className="text-gray-900 cursor-pointer focus:bg-gray-100 focus:text-gray-900 w-10"
+              >
+                {item}
+              </SelectItem>
+            ))}
         </SelectContent>
       </Select>
     </div>
