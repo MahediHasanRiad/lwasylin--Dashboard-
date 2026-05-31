@@ -15,7 +15,7 @@ import { SelectField } from "@/shared/select";
 import { type LucideIcon } from "lucide-react";
 import { useState } from "react";
 
-type variantTypeO =
+type VariantType =
   | "custom"
   | "link"
   | "default"
@@ -26,20 +26,21 @@ type variantTypeO =
   | "customOutline";
 
 interface AddCommunityDialogProps {
-  variantType?: variantTypeO;
+  variantType?: VariantType;
   Icon?: LucideIcon;
   text: string;
+  open?: boolean;
+  onOpenChange?: (open: boolean) => void;
 }
 
-interface AddCommunityType {
-  variantType?: variantTypeO;
+interface CommunityFormData {
   communityName: string;
   location: string;
   status: string;
   houseManager: string;
 }
 
-const initialValue = {
+const initialValue: CommunityFormData = {
   communityName: "",
   location: "",
   status: "",
@@ -50,56 +51,63 @@ export function AddCommunityDialog({
   variantType = "custom",
   Icon,
   text,
+  open: controlledOpen,
+  onOpenChange,
 }: AddCommunityDialogProps) {
-  const [community, setCommunity] = useState<AddCommunityType>(initialValue);
+  const [internalOpen, setInternalOpen] = useState(false);
+  const [community, setCommunity] = useState<CommunityFormData>(initialValue);
 
-  const selectHandler = (name, selectedValues) => {
-    setCommunity((prev) => ({
-      ...prev,
-      [name]: selectedValues,
-    }));
-  };
+  const isOpen = controlledOpen ?? internalOpen;
 
-  const onChangeHandler = (e) => {
+  function handleOpenChange(val: boolean) {
+    setInternalOpen(val);
+    onOpenChange?.(val);
+  }
+
+  function selectHandler(name: string, value: string) {
+    setCommunity((prev) => ({ ...prev, [name]: value }));
+  }
+
+  function onChangeHandler(e: React.ChangeEvent<HTMLInputElement>) {
     const { name, value } = e.target;
+    setCommunity((prev) => ({ ...prev, [name]: value }));
+  }
 
-    setCommunity((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
-
-  const submitHandler = () => {
+  function submitHandler() {
     console.log("value", community);
-  };
+    handleOpenChange(false);
+  }
 
   return (
-    <Dialog>
-      <form className="">
+    <Dialog open={isOpen} onOpenChange={handleOpenChange}>
+      {controlledOpen === undefined && (
         <DialogTrigger asChild>
           <Button variant={variantType}>
-            {" "}
             {Icon && <Icon />} {text}
           </Button>
         </DialogTrigger>
-        <DialogContent className="sm:max-w-sm">
-          <DialogHeader>
-            <DialogTitle>Add Community</DialogTitle>
-          </DialogHeader>
+      )}
+
+      <DialogContent className="sm:max-w-sm">
+        <DialogHeader>
+          <DialogTitle>Add Community</DialogTitle>
+        </DialogHeader>
+
+        <form>
           <FieldGroup>
             <Field>
-              <Label htmlFor="name-1">Community Name</Label>
+              <Label htmlFor="communityName">Community Name</Label>
               <Input
-                id="name-1"
+                id="communityName"
                 name="communityName"
                 defaultValue=""
                 onChange={onChangeHandler}
               />
             </Field>
             <Field>
-              <Label htmlFor="username-1">Location</Label>
+              <Label htmlFor="location">Location</Label>
               <Input
-                id="username-1"
+                id="location"
                 name="location"
                 defaultValue=""
                 onChange={onChangeHandler}
@@ -110,7 +118,7 @@ export function AddCommunityDialog({
                 label="Status"
                 name="status"
                 selectHandler={selectHandler}
-                defaultValue={""}
+                defaultValue=""
                 items={["A", "B", "C"]}
               />
             </Field>
@@ -119,21 +127,22 @@ export function AddCommunityDialog({
                 label="House Manager"
                 name="houseManager"
                 selectHandler={selectHandler}
-                defaultValue={""}
+                defaultValue=""
                 items={["Riad", "Shamim", "Tamim"]}
               />
             </Field>
           </FieldGroup>
-          <DialogFooter>
+
+          <DialogFooter className="mt-4">
             <DialogClose asChild>
               <Button variant="outline">Cancel</Button>
             </DialogClose>
-            <Button type="submit" onClick={submitHandler}>
+            <Button type="button" onClick={submitHandler}>
               Save changes
             </Button>
           </DialogFooter>
-        </DialogContent>
-      </form>
+        </form>
+      </DialogContent>
     </Dialog>
   );
 }

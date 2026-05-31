@@ -71,7 +71,7 @@ export default function TableViewField({
                 <td className="p-4 pr-6 text-center">
                   <ActionBtnField
                     Icon={MoreVertical}
-                    defaultValue={""}
+                    // defaultValue={""}
                     onValueChange={selectHandler}
                   />
                 </td>
