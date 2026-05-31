@@ -12,10 +12,27 @@ import { Field, FieldGroup } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { SelectField } from "@/shared/select";
-import { Plus } from "lucide-react";
+import { type LucideIcon } from "lucide-react";
 import { useState } from "react";
 
+type variantTypeO =
+  | "custom"
+  | "link"
+  | "default"
+  | "outline"
+  | "secondary"
+  | "ghost"
+  | "destructive"
+  | "customOutline";
+
+interface AddCommunityDialogProps {
+  variantType?: variantTypeO;
+  Icon?: LucideIcon;
+  text: string;
+}
+
 interface AddCommunityType {
+  variantType?: variantTypeO;
   communityName: string;
   location: string;
   status: string;
@@ -29,15 +46,19 @@ const initialValue = {
   houseManager: "",
 };
 
-export function AddCommunityDialog() {
+export function AddCommunityDialog({
+  variantType = "custom",
+  Icon,
+  text,
+}: AddCommunityDialogProps) {
   const [community, setCommunity] = useState<AddCommunityType>(initialValue);
 
   const selectHandler = (name, selectedValues) => {
-  setCommunity((prev) => ({
-    ...prev,
-    [name]: selectedValues, 
-  }));
-};
+    setCommunity((prev) => ({
+      ...prev,
+      [name]: selectedValues,
+    }));
+  };
 
   const onChangeHandler = (e) => {
     const { name, value } = e.target;
@@ -49,17 +70,16 @@ export function AddCommunityDialog() {
   };
 
   const submitHandler = () => {
-    console.log('value', community)
-  }
-
+    console.log("value", community);
+  };
 
   return (
     <Dialog>
       <form className="">
         <DialogTrigger asChild>
-          <Button variant="custom">
+          <Button variant={variantType}>
             {" "}
-            <Plus /> Open Dialog
+            {Icon && <Icon />} {text}
           </Button>
         </DialogTrigger>
         <DialogContent className="sm:max-w-sm">
@@ -69,11 +89,21 @@ export function AddCommunityDialog() {
           <FieldGroup>
             <Field>
               <Label htmlFor="name-1">Community Name</Label>
-              <Input id="name-1" name="communityName" defaultValue="" onChange={onChangeHandler} />
+              <Input
+                id="name-1"
+                name="communityName"
+                defaultValue=""
+                onChange={onChangeHandler}
+              />
             </Field>
             <Field>
               <Label htmlFor="username-1">Location</Label>
-              <Input id="username-1" name="location" defaultValue="" onChange={onChangeHandler} />
+              <Input
+                id="username-1"
+                name="location"
+                defaultValue=""
+                onChange={onChangeHandler}
+              />
             </Field>
             <Field>
               <SelectField
@@ -98,7 +128,9 @@ export function AddCommunityDialog() {
             <DialogClose asChild>
               <Button variant="outline">Cancel</Button>
             </DialogClose>
-            <Button type="submit" onClick={submitHandler}>Save changes</Button>
+            <Button type="submit" onClick={submitHandler}>
+              Save changes
+            </Button>
           </DialogFooter>
         </DialogContent>
       </form>

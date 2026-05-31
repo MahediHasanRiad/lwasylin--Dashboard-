@@ -1,10 +1,7 @@
 import { Filter } from "lucide-react";
-import { IconDropDown } from "./icon-drop-down";
+import { IconDropDown } from "../../feature/Add-Community/components/icon-drop-down";
 
-const fruitItems = [
-  { value: "apple", label: "Apple" },
-  { value: "banana", label: "Banana" },
-];
+const FilterItems = ["Active", "Suspend"];
 
 export default function SearchPart({
   value,
@@ -18,7 +15,7 @@ export default function SearchPart({
   };
 
   return (
-    <div className="w-full p-4 bg-[#e6eaef] rounded-[20px] font-sans">
+    <div className="w-full  font-sans">
       <div className="relative flex items-center w-full">
         <div className="absolute left-4 text-[#1e293b] pointer-events-none">
           <svg
@@ -43,7 +40,7 @@ export default function SearchPart({
           value={value}
           onChange={onChange}
           placeholder={placeholder}
-          className="w-full h-14 pl-12 pr-16 bg-[#f4f7fa] text-[#1e293b] text-base placeholder-[#576b81] rounded-2xl border border-transparent focus:outline-none focus:border-[#3b82f6] focus:bg-white transition-all duration-200"
+          className="w-full h-14 pl-12 pr-16 bg-white text-[#1e293b] text-base placeholder-[#576b81] rounded-2xl border border-transparent focus:outline-none focus:border-[#3b82f6] focus:bg-white transition-all duration-200"
         />
 
         {/* Right Filter Button Container */}
@@ -51,7 +48,7 @@ export default function SearchPart({
             {/* Filter Funnel Icon */}
             <IconDropDown
               Icon={Filter}
-              items={fruitItems}
+              items={FilterItems}
               onValueChange={(val) => console.log(val)}
             />
         </div>

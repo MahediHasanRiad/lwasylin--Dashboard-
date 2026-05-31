@@ -36,7 +36,7 @@ export function PaginationField({ currentPage, totalPages, onPageChange }: Pagin
             aria-label="Go to previous page"
             disabled={currentPage === 1}
             className="h-[38px] w-[38px] flex items-center justify-center rounded-[10px]
-              bg-[#1A1A1A] border border-[#2a2a2a] text-[#666]
+              bg-white border border-[#2a2a2a] text-[#666]
               hover:text-[#D4A017] hover:border-[rgba(212,160,23,0.3)] hover:bg-[#1e1a0f]
               disabled:opacity-30 disabled:cursor-not-allowed
               transition-all duration-150 active:scale-95"
@@ -63,8 +63,8 @@ export function PaginationField({ currentPage, totalPages, onPageChange }: Pagin
                   rounded-[10px] text-[13px] font-medium border cursor-pointer
                   transition-all duration-150 active:scale-95
                   ${page === currentPage
-                    ? "bg-[#2C2616] text-[#D4A017] border-[rgba(212,160,23,0.35)]"
-                    : "bg-[#1A1A1A] text-[#A3A3A3] border-[#2a2a2a] hover:bg-[#262626] hover:text-white hover:border-[#333]"
+                    ? "bg-black text-white border-[rgba(212,160,23,0.35)]"
+                    : " bg-white text-black border-[#2a2a2a] hover:bg-[#262626] hover:text-white hover:border-[#333]"
                   }`}
               >
                 {page}

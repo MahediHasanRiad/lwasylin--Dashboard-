@@ -1,13 +1,12 @@
 import { MoreVertical } from "lucide-react"; // Elegant action dots icon
-import { IconDropDown } from "./icon-drop-down";
-import { ActionBtnField } from "./action-btn";
+import { ActionBtnField } from "../../feature/Add-Community/components/action-btn";
 
 // Example data array matching your image structure
 const actionData = [
-    {value: "active", label: "Active"},
-    {value: "suspend", label: "Suspend"},
-    {value: "edit", label: "Edit"},
-]
+  { value: "active", label: "Active" },
+  { value: "suspend", label: "Suspend" },
+  { value: "edit", label: "Edit" },
+];
 
 export default function TableViewField({ data }) {
   const selectHandler = (data) => {

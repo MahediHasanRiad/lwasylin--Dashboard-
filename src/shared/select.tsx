@@ -1,4 +1,3 @@
-import React from "react";
 import { Label } from "@/components/ui/label";
 import {
   Select,
@@ -7,7 +6,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { MoreVertical, type LucideIcon } from "lucide-react"; // Default fallback icon
 
 interface SelectType {
   label?: string;
@@ -15,7 +13,6 @@ interface SelectType {
   selectHandler: (name: string, value: string) => void;
   defaultValue?: string;
   items: string[];
-  Icon?: LucideIcon | React.ComponentType<{ className?: string }>; // Optional icon prop
 }
 
 export function SelectField({
@@ -24,7 +21,6 @@ export function SelectField({
   selectHandler,
   defaultValue,
   items,
-  Icon = MoreVertical, 
 }: SelectType) {
   return (
     <div className="space-y-2">
@@ -39,32 +35,26 @@ export function SelectField({
         defaultValue={defaultValue}
         onValueChange={(value) => selectHandler(name, value)}
       >
-
         <SelectTrigger
           id={`${name}-select`}
-          className="w-10 h-10 p-0 flex items-center justify-center rounded-xl bg-transparent text-gray-700 hover:bg-gray-100 [&>svg]:hidden cursor-pointer transition-colors duration-150"
+          className="w-full p-0 flex items-center justify-center rounded-xl bg-transparent text-gray-700 hover:bg-gray-100 [&>svg]:hidden cursor-pointer transition-colors duration-150"
         >
-
-          <span>
-            <Icon className="w-5 h-5 shrink-0" />
-          </span>
-
-          <div className="hidden">
-            <SelectValue />
-          </div>
+          <SelectValue />
         </SelectTrigger>
 
-        <SelectContent align="end" className="bg-white border border-gray-200 shadow-md">
-          {items &&
-            items.map((item, i) => (
-              <SelectItem
-                key={i}
-                value={item}
-                className="text-gray-900 cursor-pointer focus:bg-gray-100 focus:text-gray-900 w-10"
-              >
-                {item}
-              </SelectItem>
-            ))}
+        <SelectContent
+          align="end"
+          className="bg-white border border-gray-200 shadow-md"
+        >
+          {items.map((item) => (
+            <SelectItem
+              key={item}
+              value={item}
+              className="text-gray-900 cursor-pointer focus:bg-gray-100 focus:text-gray-900"
+            >
+              {item}
+            </SelectItem>
+          ))}
         </SelectContent>
       </Select>
     </div>

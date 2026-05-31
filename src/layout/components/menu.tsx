@@ -13,7 +13,7 @@ export function DashboardMenuButton({ Icon, text, pageLink }: MenuType) {
       {({ isActive }) => (
         <div
           className={`
-            h-12 w-full flex items-center gap-4 hover:bg-primary-hover-0 hover:pl-2
+            h-10 w-full flex items-center gap-4 hover:bg-primary-hover-0 hover:pl-2
             rounded-r-2xl rounded-l-none
             transition-all duration-200
             cursor-pointer my-2
@@ -27,7 +27,7 @@ export function DashboardMenuButton({ Icon, text, pageLink }: MenuType) {
           <Icon
             className={`size-5 transition-colors ${isActive ? "text-secondary-0 ml-2" : "group-hover:text-secondary-0"}`}
           />
-          <span className="text-lg font-medium">{text}</span>
+          <span className="text-md font-medium">{text}</span>
         </div>
       )}
     </NavLink>

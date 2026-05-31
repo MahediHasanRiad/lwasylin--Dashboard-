@@ -1,29 +1,26 @@
-import React from "react";
-import { type LucideIcon } from "lucide-react";
 import {
   Select,
   SelectContent,
   SelectGroup,
   SelectItem,
-  SelectLabel,
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { AddCommunityDialog } from "./add-community-dialog";
+import type { LucideIcon } from "lucide-react";
 
-interface IconDropDownProps {
-  Icon: LucideIcon | React.ComponentType<{ className?: string }>;
-  label?: string;
+interface IconDropDownType {
+  Icon: LucideIcon;
+  items: string[];
   onValueChange?: (value: string) => void;
   defaultValue?: string;
 }
 
-export function ActionBtnField({
+export function IconDropDown({
   Icon,
-  label = "Options",
+  items,
   onValueChange,
   defaultValue,
-}: IconDropDownProps) {
+}: IconDropDownType) {
   return (
     <Select defaultValue={defaultValue} onValueChange={onValueChange}>
       <SelectTrigger className="w-10 h-10 p-0 flex items-center justify-center rounded-xl bg-transparent border border-gray-300 text-gray-700 hover:bg-gray-100 [&>svg]:hidden cursor-pointer transition-colors duration-150">
@@ -37,15 +34,23 @@ export function ActionBtnField({
         </div>
       </SelectTrigger>
 
-      <SelectContent align="end">
+      <SelectContent align="center">
         <SelectGroup>
-          {label && <SelectLabel>{label}</SelectLabel>}
-
-          <SelectItem value="action">Active</SelectItem>
-          <SelectItem value="suspend">Suspend</SelectItem>
-          <SelectItem value="edit">
-            <AddCommunityDialog />
-          </SelectItem>
+          {items.length > 0 ? (
+            items.map((item) => (
+              <SelectItem
+                key={item}
+                value={item}
+                className="text-gray-900 cursor-pointer focus:bg-gray-100 focus:text-gray-900"
+              >
+                {item}
+              </SelectItem>
+            ))
+          ) : (
+            <SelectItem value="" disabled>
+              No items found
+            </SelectItem>
+          )}
         </SelectGroup>
       </SelectContent>
     </Select>
