@@ -2,6 +2,7 @@ import MainLayout from "./layout/main.layout";
 import { Routes, Route } from "react-router";
 import OverviewPage from "./feature/overview/overview.page";
 import AddCommunity from "./feature/Add-Community/add-community.page";
+import HouseDatabase from "./feature/House-Database(Assets)/house-database.page";
 
 
 function App() {
@@ -19,7 +20,7 @@ function App() {
               <Routes>
                 <Route path="" element={<OverviewPage />} />
                 <Route path="/add-community" element={<AddCommunity />} />
-                <Route path="/house-database" element={<AddCommunity />} />
+                <Route path="/house-database" element={<HouseDatabase />} />
                 <Route path="*" element={<div>Page Not Found</div>} />
               </Routes>
             </MainLayout>

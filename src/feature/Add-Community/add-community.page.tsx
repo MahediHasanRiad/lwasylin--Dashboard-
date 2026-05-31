@@ -1,9 +1,11 @@
 import { Plus } from "lucide-react";
-import { AddCommunityDialog } from "../../shared/Table-view-part/add-community-dialog";
-import SearchPart from "../../shared/Table-view-part/search-bar";
-import TableViewField from "../../shared/Table-view-part/table-view";
+import { AddCommunityDialog } from "./components/add-community-dialog";
+import TableViewField from "./components/table-view";
 import { PaginationField } from "@/shared/pagination";
-import TopBar from "@/shared/Table-view-part/top-bar";
+import TopBar from "@/feature/Add-Community/components/top-bar";
+import SearchPart from "./components/search-bar";
+
+const HeadersData = ['Community name', 'Location name', 'Units', 'House manager', 'Statues', 'Actions']
 
 const tableDataMock = [
   {
@@ -48,7 +50,7 @@ function AddCommunity() {
 
         {/* table part  */}
         <section className="w-full mt-4">
-          <TableViewField data={tableDataMock} />
+          <TableViewField data={tableDataMock} headersData={HeadersData} />
         </section>
 
         {/* pagination  */}

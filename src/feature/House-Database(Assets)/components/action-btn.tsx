@@ -9,7 +9,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { AddCommunityDialog } from "./add-community-dialog";
+import HouseDatabaseDialogField from "./house-database-dialog";
+
 
 interface IconDropDownProps {
   Icon: LucideIcon | React.ComponentType<{ className?: string }>;
@@ -18,7 +19,7 @@ interface IconDropDownProps {
   defaultValue?: string;
 }
 
-export function ActionBtnField({
+export function HouseDashboardActionBtnField({
   Icon,
   label = "Options",
   onValueChange,
@@ -43,7 +44,9 @@ export function ActionBtnField({
 
           <SelectItem value="action">Active</SelectItem>
           <SelectItem value="suspend">Suspend</SelectItem>
-          <AddCommunityDialog variantType={"customOutline"} text="Edit" />
+          <button>Edit</button>
+          <HouseDatabaseDialogField />
+          {/* <AddCommunityDialog variantType={"customOutline"} text="Edit" /> */}
         </SelectGroup>
       </SelectContent>
     </Select>

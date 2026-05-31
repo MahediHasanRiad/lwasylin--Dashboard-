@@ -19,7 +19,7 @@ export function DashboardMenuButton({ Icon, text, pageLink }: MenuType) {
             cursor-pointer my-2
             ${
               isActive
-                ? "bg-primary-hover-0 border-l-4 border-primary-0 "
+                ? "bg-primary-hover-0 border-l-4 border-primary-0 py-6"
                 : "hover:bg-card-bg-0/50 hover:text-card-0"
             }
           `}

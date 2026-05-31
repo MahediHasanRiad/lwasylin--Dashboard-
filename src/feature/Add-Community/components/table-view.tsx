@@ -1,14 +1,13 @@
 import { MoreVertical } from "lucide-react"; // Elegant action dots icon
-import { ActionBtnField } from "../../feature/Add-Community/components/action-btn";
+import { ActionBtnField } from "./action-btn";
 
-// Example data array matching your image structure
-const actionData = [
-  { value: "active", label: "Active" },
-  { value: "suspend", label: "Suspend" },
-  { value: "edit", label: "Edit" },
-];
-
-export default function TableViewField({ data }) {
+export default function TableViewField({
+  data,
+  headersData,
+}: {
+  data: any;
+  headersData: string[];
+}) {
   const selectHandler = (data) => {
     console.log(data);
   };
@@ -20,24 +19,14 @@ export default function TableViewField({ data }) {
           {/* Table Header Row */}
           <thead>
             <tr className="bg-[#f4f7fa] border-b border-[#e2e8f0] text-md">
-              <th className="p-4 pl-6 font-secondary font-medium tracking-wide text-[#1e293b] uppercase">
-                Community name
-              </th>
-              <th className="p-4 font-secondary font-medium tracking-wide text-[#1e293b] uppercase">
-                Location name
-              </th>
-              <th className="p-4 font-secondary font-medium tracking-wide text-[#1e293b] uppercase">
-                Units
-              </th>
-              <th className="p-4 font-secondary font-medium tracking-wide text-[#1e293b] uppercase">
-                House manager
-              </th>
-              <th className="p-4 font-secondary font-medium tracking-wide text-[#1e293b] uppercase">
-                Statues
-              </th>
-              <th className="p-4 pr-6 font-secondary font-medium tracking-wide text-[#1e293b] uppercase text-center w-24">
-                Actions
-              </th>
+              {headersData.map((item, i) => (
+                <th
+                  key={i}
+                  className="p-4 pl-6 font-secondary font-medium tracking-wide text-[#1e293b] uppercase"
+                >
+                  {item}
+                </th>
+              ))}
             </tr>
           </thead>
 
@@ -49,20 +38,20 @@ export default function TableViewField({ data }) {
               >
                 {/* Community Name */}
                 <td className="p-4 pl-6 text-[15px] font-medium text-[#475569]">
-                  {row.communityName}
+                  {row.name}
                 </td>
 
                 {/* Location Name */}
                 <td className="p-4 text-[15px] text-[#475569]">
-                  {row.locationName}
+                  {row.locations}
                 </td>
 
                 {/* Units */}
-                <td className="p-4 text-[15px] text-[#475569]">{row.units}</td>
+                <td className="p-4 text-[15px] text-[#475569]">{row.items}</td>
 
                 {/* House Manager */}
                 <td className="p-4 text-[15px] text-[#475569]">
-                  {row.houseManager}
+                  {row.communityName}
                 </td>
 
                 {/* Status Pills Block */}
@@ -74,7 +63,7 @@ export default function TableViewField({ data }) {
                         : "bg-[#dcfce7] text-[#15803d] border-[#bbf7d0]"
                     }`}
                   >
-                    {row.status}
+                    {row.lastInvestigation}
                   </span>
                 </td>
 

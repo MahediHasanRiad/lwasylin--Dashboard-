@@ -1,5 +1,5 @@
 import { Filter } from "lucide-react";
-import { IconDropDown } from "../../feature/Add-Community/components/icon-drop-down";
+import { IconDropDown } from "./icon-drop-down";
 
 const FilterItems = ["Active", "Suspend"];
 
@@ -9,7 +9,6 @@ export default function SearchPart({
   onFilterClick,
   placeholder = "Search by name, location",
 }) {
-    
   const selectHandler = (data) => {
     console.log(data);
   };
@@ -45,12 +44,16 @@ export default function SearchPart({
 
         {/* Right Filter Button Container */}
         <div className="absolute right-3 top-1/2 -translate-y-1/2">
-            {/* Filter Funnel Icon */}
-            <IconDropDown
-              Icon={Filter}
-              items={FilterItems}
-              onValueChange={(val) => console.log(val)}
-            />
+          {/* Filter Funnel Icon */}
+          <IconDropDown
+            Icon={Filter}
+            items={[
+              { label: "Active", value: "active" },
+              { label: "Suspend", value: "suspend" },
+              { label: "Edit", value: "edit" },
+            ]}
+            onSelect={(value) => console.log(value)}
+          />
         </div>
       </div>
     </div>
