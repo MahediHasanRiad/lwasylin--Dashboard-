@@ -2,8 +2,14 @@ import { DollarSign, House, ListTodo, Map } from "lucide-react";
 import OverviewCard from "./components/overview-card";
 import HouseCard from "./components/house-card";
 import image from '../../../public/house.png'
+import { useEffect } from "react";
 
 function OverviewPage() {
+
+  useEffect(() => {
+    
+  }, [])
+
   return (
     <section className="p-4">
       {/* top bar  */}
@@ -25,21 +31,21 @@ function OverviewPage() {
         />
         <OverviewCard
           Icon={House}
-          title="Active nations"
+          title="Total House"
           value={47}
           comparisonLabel="vs last 30d"
           percentage="+8.8%"
         />
         <OverviewCard
           Icon={ListTodo}
-          title="Active nations"
+          title="Open work Order"
           value={47}
           comparisonLabel="vs last 30d"
           percentage="+8.8%"
         />
         <OverviewCard
           Icon={DollarSign}
-          title="Active nations"
+          title="Monthly Subscription Sales"
           value={47}
           comparisonLabel="vs last 30d"
           percentage="+8.8%"

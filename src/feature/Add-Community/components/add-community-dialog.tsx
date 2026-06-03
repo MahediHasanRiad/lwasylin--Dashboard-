@@ -54,6 +54,7 @@ export function AddCommunityDialog({
   open: controlledOpen,
   onOpenChange,
 }: AddCommunityDialogProps) {
+
   const [internalOpen, setInternalOpen] = useState(false);
   const [community, setCommunity] = useState<CommunityFormData>(initialValue);
 
@@ -77,7 +78,7 @@ export function AddCommunityDialog({
     console.log("value", community);
     handleOpenChange(false);
   }
-
+console.log('community', community)
   return (
     <Dialog open={isOpen} onOpenChange={handleOpenChange}>
       {controlledOpen === undefined && (

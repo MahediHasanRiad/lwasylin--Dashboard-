@@ -3,13 +3,14 @@ import { Routes, Route } from "react-router";
 import OverviewPage from "./feature/overview/overview.page";
 import AddCommunity from "./feature/Add-Community/add-community.page";
 import HouseDatabase from "./feature/House-Database(Assets)/house-database.page";
+import LoginPage from "./feature/auth/login.page";
 
 
 function App() {
   return (
     <Routes>
       <Route>
-        <Route path="/login" element={""} />
+        <Route path="/login" element={<LoginPage />} />
       </Route>
 
       <Route>
