@@ -7,6 +7,7 @@ import LoginPage from "./feature/auth/login.page";
 import HousingManager from "./feature/Housing-Manager/housing-manager";
 import ContractorPage from "./feature/contractor/contractor.page";
 import WorkPage from "./feature/work/work.page";
+import SubscriptionPage from "./feature/subscription/subscription.page";
 
 
 function App() {
@@ -15,7 +16,6 @@ function App() {
       <Route>
         <Route path="/login" element={<LoginPage />} />
       </Route>
-
       <Route>
         <Route
           path="/*"
@@ -27,7 +27,10 @@ function App() {
                 <Route path="/house-database" element={<HouseDatabase />} />
                 <Route path="/housing-manager" element={<HousingManager />} />
                 <Route path="/contractor" element={<ContractorPage />} />
-                <Route path="/work" element={<WorkPage />} />
+                <Route path="/jobs" element={<WorkPage />} />
+                <Route path="/subscription" element={<SubscriptionPage />} />
+
+
                 <Route path="*" element={<div>Page Not Found</div>} />
               </Routes>
             </MainLayout>

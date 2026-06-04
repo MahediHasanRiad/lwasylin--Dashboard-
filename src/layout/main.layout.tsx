@@ -70,7 +70,7 @@ function MainLayout({ children }: MainLayoutProps) {
         <DashboardMenuButton
           Icon={ScrollText}
           text="Work (jobs)"
-          pageLink="work-jobs"
+          pageLink="jobs"
         />
         <DashboardMenuButton
           Icon={CircleDollarSign}
