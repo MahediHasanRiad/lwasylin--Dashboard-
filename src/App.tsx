@@ -4,6 +4,9 @@ import OverviewPage from "./feature/overview/overview.page";
 import AddCommunity from "./feature/Add-Community/add-community.page";
 import HouseDatabase from "./feature/House-Database(Assets)/house-database.page";
 import LoginPage from "./feature/auth/login.page";
+import HousingManager from "./feature/Housing-Manager/housing-manager";
+import ContractorPage from "./feature/contractor/contractor.page";
+import WorkPage from "./feature/work/work.page";
 
 
 function App() {
@@ -22,6 +25,9 @@ function App() {
                 <Route path="" element={<OverviewPage />} />
                 <Route path="/add-community" element={<AddCommunity />} />
                 <Route path="/house-database" element={<HouseDatabase />} />
+                <Route path="/housing-manager" element={<HousingManager />} />
+                <Route path="/contractor" element={<ContractorPage />} />
+                <Route path="/work" element={<WorkPage />} />
                 <Route path="*" element={<div>Page Not Found</div>} />
               </Routes>
             </MainLayout>

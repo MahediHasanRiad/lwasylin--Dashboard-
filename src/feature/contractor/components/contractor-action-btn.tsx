@@ -7,21 +7,20 @@ import {
   DropdownMenuLabel,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { AddCommunityDialog } from "./add-community-dialog";
+import { AddContractorDialog } from "./add-contractor-dialog";
 
-interface ActionBtnFieldProps {
+
+interface ContractorActionBtnProps {
   Icon: LucideIcon;
   label?: string;
-  open?: boolean; 
-  onOpenChange?: (open: boolean) => void;
   onValueChange?: (value: string) => void;
 }
 
-export function ActionBtnField({
+export function ContractorActionBtn({
   Icon,
   label = "Options",
   onValueChange,
-}: ActionBtnFieldProps) {
+}: ContractorActionBtnProps) {
   const [editOpen, setEditOpen] = useState(false);
 
   return (
@@ -42,18 +41,10 @@ export function ActionBtnField({
           <DropdownMenuItem onSelect={() => onValueChange?.("suspend")}>
             Suspend
           </DropdownMenuItem>
-          <DropdownMenuItem onSelect={() => setEditOpen(true)}>
-            Edit
-          </DropdownMenuItem>
-        </DropdownMenuContent>
+          <AddContractorDialog title="Edit" variant={'customOutline'} />
+        </DropdownMenuContent> 
       </DropdownMenu>
 
-      <AddCommunityDialog
-        open={editOpen}
-        onOpenChange={setEditOpen}
-        variantType="customOutline"
-        text="Edit"
-      />
     </>
   );
 }

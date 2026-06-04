@@ -64,8 +64,8 @@ function MainLayout({ children }: MainLayoutProps) {
         />
         <DashboardMenuButton
           Icon={UserRoundPen}
-          text="Vendor"
-          pageLink="vendor"
+          text="Contractor"
+          pageLink="contractor"
         />
         <DashboardMenuButton
           Icon={ScrollText}
