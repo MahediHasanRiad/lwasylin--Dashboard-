@@ -4,7 +4,13 @@ import axios from "axios";
 export const overviewAsyncThunk = createAsyncThunk('overview/showAll', async(_, {rejectWithValue}) => {
     try {
         const token = localStorage.getItem('access-token')
-        const response = await axios.get(`${import.meta.env.VITE_API_URL}`)
+        const response = await axios.get(`${import.meta.env.VITE_API_URL}/admin/stats`, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        })
+
+        return response.data.data 
     } 
     catch (error: unknown) {
         if(axios.isAxiosError(error)){

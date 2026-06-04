@@ -4,19 +4,10 @@ import TableViewField from "./components/table-view";
 import { PaginationField } from "@/shared/pagination";
 import TopBar from "@/feature/Add-Community/components/top-bar";
 import SearchPart from "./components/search-bar";
+import { communityData } from "./data/community-data";
 
 const HeadersData = ['Community name', 'Location name', 'Units', 'House manager', 'Statues', 'Actions']
 
-const tableDataMock = [
-  {
-    id: "1",
-    communityName: "Little Pine Community",
-    locationName: "SK",
-    units: 740,
-    houseManager: "Jerome Bell",
-    status: "Suspend",
-  },
-];
 
 function AddCommunity() {
   return (
@@ -50,7 +41,7 @@ function AddCommunity() {
 
         {/* table part  */}
         <section className="w-full mt-4">
-          <TableViewField data={tableDataMock} headersData={HeadersData} />
+          <TableViewField data={communityData} headersData={HeadersData} />
         </section>
 
         {/* pagination  */}

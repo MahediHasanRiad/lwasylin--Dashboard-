@@ -11,7 +11,7 @@ export default function TableViewField({
   const selectHandler = (data) => {
     console.log(data);
   };
-
+  console.log("data", data);
   return (
     <div className="w-full overflow-hidden border border-[#e2e8f0] rounded-[20px] bg-white shadow-sm">
       <div className="w-full overflow-x-auto">
@@ -31,7 +31,7 @@ export default function TableViewField({
           </thead>
 
           <tbody className="divide-y divide-[#e2e8f0]">
-            {data.map((row) => (
+            {data?.allCommunities?.map((row) => (
               <tr
                 key={row.id}
                 className="hover:bg-[#f8fafc] transition-colors duration-150"
@@ -43,27 +43,29 @@ export default function TableViewField({
 
                 {/* Location Name */}
                 <td className="p-4 text-[15px] text-[#475569]">
-                  {row.locations}
+                  {row.location}
                 </td>
 
                 {/* Units */}
-                <td className="p-4 text-[15px] text-[#475569]">{row.items}</td>
+                <td className="p-4 text-[15px] text-[#475569]">
+                  {row._count.properties}
+                </td>
 
                 {/* House Manager */}
                 <td className="p-4 text-[15px] text-[#475569]">
-                  {row.communityName}
+                  {row.manager}
                 </td>
 
                 {/* Status Pills Block */}
                 <td className="p-4">
                   <span
                     className={`inline-flex items-center justify-center px-3 py-1 text-xs font-semibold rounded-full border ${
-                      row.status === "Suspend"
-                        ? "bg-[#fef9c3] text-[#ca8a04] border-[#fef08a]"
-                        : "bg-[#dcfce7] text-[#15803d] border-[#bbf7d0]"
+                      row.isActive === true
+                        ? "bg-[#dcfce7] text-[#15803d] border-[#bbf7d0]"
+                        : "bg-[#fef9c3] text-[#ca8a04] border-[#fef08a]"
                     }`}
                   >
-                    {row.lastInvestigation}
+                    {row.isActive === true ? "Active" : "Suspend"}
                   </span>
                 </td>
 

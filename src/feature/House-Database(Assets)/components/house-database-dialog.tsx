@@ -191,7 +191,7 @@ export default function HouseDatabaseDialogField({
             </div>
           </div>
 
-          <Button onClick={handleSubmit} className="w-full">
+          <Button onClick={handleSubmit} className="w-full" aria-describedby="submit">
             Save Changes
           </Button>
         </div>

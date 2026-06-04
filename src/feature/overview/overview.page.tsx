@@ -3,12 +3,21 @@ import OverviewCard from "./components/overview-card";
 import HouseCard from "./components/house-card";
 import image from '../../../public/house.png'
 import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import type { AppDispatch, RootState } from "@/store/store";
+import { overviewAsyncThunk } from "./redux/overview.thunk";
 
 function OverviewPage() {
 
+  const {isError, isLoading, data} = useSelector((state: RootState) => state.overview)
+  const dispatch = useDispatch<AppDispatch>()
+
   useEffect(() => {
-    
+    dispatch(overviewAsyncThunk()).unwrap()
   }, [])
+
+  if(isError) <div>{isError}</div>
+  if(isLoading) <div>Loading...</div>
 
   return (
     <section className="p-4">
@@ -25,28 +34,28 @@ function OverviewPage() {
         <OverviewCard
           Icon={Map}
           title="Active nations"
-          value={47}
+          value={data?.activeCommunities}
           comparisonLabel="vs last 30d"
           percentage="+8.8%"
         />
         <OverviewCard
           Icon={House}
           title="Total House"
-          value={47}
+          value={data?.totalProperties}
           comparisonLabel="vs last 30d"
           percentage="+8.8%"
         />
         <OverviewCard
           Icon={ListTodo}
           title="Open work Order"
-          value={47}
+          value={data?.openWorkOrders}
           comparisonLabel="vs last 30d"
           percentage="+8.8%"
         />
         <OverviewCard
           Icon={DollarSign}
           title="Monthly Subscription Sales"
-          value={47}
+          value={data?.monthlyRevenue  }
           comparisonLabel="vs last 30d"
           percentage="+8.8%"
         />

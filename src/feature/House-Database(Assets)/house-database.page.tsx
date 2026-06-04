@@ -5,6 +5,7 @@ import AddButton from "@/shared/Add-button";
 import SearchPart from "../Add-Community/components/search-bar";
 import HousingTableViewField from "./components/housing-table-view";
 import { PaginationField } from "@/shared/pagination";
+import { propertyData } from "./data/property-data";
 
 const headersData = [
   "Houses Name/ID",
@@ -69,7 +70,7 @@ function HouseDatabase() {
         {/* table view  */}
         <section className="w-full mt-4">
           <HousingTableViewField
-            data={houseDatabaseData}
+            data={propertyData}
             headersData={headersData}
           />
         </section>

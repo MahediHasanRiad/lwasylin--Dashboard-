@@ -12,7 +12,7 @@ export default function HousingTableViewField({
   const selectHandler = (data) => {
     console.log(data);
   };
-
+console.log('property data', data)
   return (
     <div className="w-full overflow-hidden border border-[#e2e8f0] rounded-[20px] bg-white shadow-sm">
       <div className="w-full overflow-x-auto">
@@ -32,19 +32,19 @@ export default function HousingTableViewField({
           </thead>
 
           <tbody className="divide-y divide-[#e2e8f0]">
-            {data.map((row) => (
+            {data?.allProperties?.map((row) => (
               <tr
                 key={row.id}
                 className="hover:bg-[#f8fafc] transition-colors duration-150"
               >
                 {/* Community Name */}
                 <td className="p-4 pl-6 text-[15px] font-medium text-[#475569]">
-                  {row.name}
+                  {row.propertyCode}
                 </td>
 
                 {/* Location Name */}
                 <td className="p-4 text-[15px] text-[#475569]">
-                  {row.locations}
+                  {row.location}
                 </td>
 
                 {/* Units */}
@@ -52,7 +52,7 @@ export default function HousingTableViewField({
 
                 {/* House Manager */}
                 <td className="p-4 text-[15px] text-[#475569]">
-                  {row.communityName}
+                  {row.community.name}
                 </td>
 
                 {/* Status Pills Block */}
