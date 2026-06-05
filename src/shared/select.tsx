@@ -23,9 +23,14 @@ export function SelectField({
   items,
 }: SelectType) {
   return (
-    <div className="space-y-2">
+    <div className="space-y-1.5">
       {label ? (
-        <Label htmlFor={`${name}-select`}>{label}</Label>
+        <Label
+          htmlFor={`${name}-select`}
+          className="text-xs font-medium text-muted-foreground"
+        >
+          {label}
+        </Label>
       ) : (
         <span className="sr-only">Toggle options</span>
       )}
@@ -37,20 +42,20 @@ export function SelectField({
       >
         <SelectTrigger
           id={`${name}-select`}
-          className="w-full p-0 flex items-center justify-center rounded-xl bg-transparent text-gray-700 hover:bg-gray-100 [&>svg]:hidden cursor-pointer transition-colors duration-150"
+          className="w-full h-9 px-3 rounded-lg border border-input bg-background text-sm text-foreground shadow-none transition-colors hover:bg-accent hover:text-accent-foreground focus:ring-1 focus:ring-ring"
         >
-          <SelectValue />
+          <SelectValue placeholder="Select an option" />
         </SelectTrigger>
 
         <SelectContent
           align="end"
-          className="bg-white border border-gray-200 shadow-md"
+          className="rounded-lg border border-border bg-popover shadow-md"
         >
           {items.map((item) => (
             <SelectItem
               key={item}
               value={item}
-              className="text-gray-900 cursor-pointer focus:bg-gray-100 focus:text-gray-900"
+              className="rounded-md text-sm text-popover-foreground cursor-pointer transition-colors focus:bg-accent focus:text-accent-foreground"
             >
               {item}
             </SelectItem>

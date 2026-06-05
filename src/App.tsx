@@ -8,6 +8,7 @@ import HousingManager from "./feature/Housing-Manager/housing-manager";
 import ContractorPage from "./feature/contractor/contractor.page";
 import WorkPage from "./feature/work/work.page";
 import SubscriptionPage from "./feature/subscription/subscription.page";
+import PrivacyPolicyPage from "./feature/privacy-policy/privacy-policy.page";
 
 
 function App() {
@@ -29,6 +30,8 @@ function App() {
                 <Route path="/contractor" element={<ContractorPage />} />
                 <Route path="/jobs" element={<WorkPage />} />
                 <Route path="/subscription" element={<SubscriptionPage />} />
+
+                <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
 
 
                 <Route path="*" element={<div>Page Not Found</div>} />
