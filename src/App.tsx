@@ -12,6 +12,8 @@ import PrivacyPolicyPage from "./feature/privacy-policy/privacy-policy.page";
 import TermsAndCondition from "./feature/terms-condition/terms-condition.page";
 import AboutPage from "./feature/About/about.page";
 import FAQpage from "./feature/FAQ/faq.page";
+import IssuePage from "./feature/issue/issue.page";
+import SettingPage from "./feature/setting/setting.page";
 
 
 function App() {
@@ -38,6 +40,8 @@ function App() {
                 <Route path="/terms-and-conditions" element={<TermsAndCondition />} />
                 <Route path="/about" element={<AboutPage />} />
                 <Route path="/faq" element={<FAQpage />} />
+                <Route path="/issue" element={<IssuePage />} />
+                <Route path="/setting" element={<SettingPage />} />
 
 
                 <Route path="*" element={<div>Page Not Found</div>} />

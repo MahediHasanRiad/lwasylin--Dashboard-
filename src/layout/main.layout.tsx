@@ -16,7 +16,7 @@ import {
 import { toast } from "sonner";
 import MenuWithImage from "@/shared/menu-with-image";
 
-import image from '../../public/profile.png'
+import image from "../../public/profile.png";
 import NavbarField from "./components/nav";
 
 interface MainLayoutProps {
@@ -100,11 +100,14 @@ function MainLayout({ children }: MainLayoutProps) {
           pageLink="faq"
         />
 
-        <div className="my-3 border-t border-white" />
-        <p className="text-[9px] font-bold uppercase tracking-[0.18em] text-zinc-600 px-3 pb-2">
-          {/* Configure */}
-        </p>
+        <div className=" border-t border-white" />
 
+        <DashboardMenuButton
+          Icon={ShieldQuestionMark}
+          text="Issue"
+          pageLink="issue"
+        />
+        <div className=" border-t border-white" />
         <DashboardMenuButton
           Icon={UserRoundCog}
           text="Setting"
@@ -112,23 +115,26 @@ function MainLayout({ children }: MainLayoutProps) {
         />
       </div>
 
+      <p className="text-[9px] font-bold uppercase tracking-[0.18em] text-zinc-600 px-3 pb-2"></p>
       {/* Logout */}
       <div
         className="pt-3 mt-3 border-t border-zinc-800/50"
         onClick={handleLogOut}
       >
-        <MenuWithImage image={image} email={'contact.mahedihasan@gmail.com'} role={'Admin'} />
+        <MenuWithImage
+          image={image}
+          email={"contact.mahedihasan@gmail.com"}
+          role={"Admin"}
+        />
       </div>
     </section>
   );
 
   return (
     <section className="min-h-screen bg-primary-bg-0 antialiased selection:bg-amber-500/20 selection:text-amber-200">
-
       <div className="sticky top-0 z-50 backdrop-blur-md bg-primary-bg-0/95 border-b border-zinc-800/40">
         <NavbarField onMenuClick={() => setIsMobileMenuOpen(true)} />
       </div>
-
 
       <section className="relative grid grid-cols-6  mx-auto">
         {/* ── MOBILE OVERLAY ── */}
