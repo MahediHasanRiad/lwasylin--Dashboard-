@@ -13,7 +13,7 @@ const benefits = [
 
 function SubscriptionPage() {
   return (
-    <section>
+    <section className="p-4">
       {/* top bar  */}
       <section>
         <TopBar
@@ -33,7 +33,7 @@ function SubscriptionPage() {
         </section>
 
         {/* card  */}
-        <section className="grid grid-cols-2 gap-8">
+        <section className="grid md:grid-cols-3 gap-8">
           <SubscriptionCard title={'Monthly Membership'} price={10} duration={'monthly'} benefits={benefits}/>
           <SubscriptionCard title={'Monthly Membership'} price={10} duration={'monthly'} benefits={benefits}/>
         </section>

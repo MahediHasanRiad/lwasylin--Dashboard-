@@ -34,7 +34,7 @@ export function ActionBtnField({
           </button>
         </DropdownMenuTrigger>
 
-        <DropdownMenuContent align="end">
+        <DropdownMenuContent align="center">
           {label && <DropdownMenuLabel>{label}</DropdownMenuLabel>}
           <DropdownMenuItem onSelect={() => onValueChange?.("action")}>
             Active

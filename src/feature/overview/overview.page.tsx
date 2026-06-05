@@ -20,7 +20,7 @@ function OverviewPage() {
   if(isLoading) <div>Loading...</div>
 
   return (
-    <section className="p-4">
+    <section className="p-4 ">
       {/* top bar  */}
       <div className="w-full p-8 h-50 bg-primary-0 rounded-2xl">
         <h1 className="font-Oswald text-3xl md:text-[48px] font-semibold">
