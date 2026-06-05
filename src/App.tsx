@@ -9,6 +9,9 @@ import ContractorPage from "./feature/contractor/contractor.page";
 import WorkPage from "./feature/work/work.page";
 import SubscriptionPage from "./feature/subscription/subscription.page";
 import PrivacyPolicyPage from "./feature/privacy-policy/privacy-policy.page";
+import TermsAndCondition from "./feature/terms-condition/terms-condition.page";
+import AboutPage from "./feature/About/about.page";
+import FAQpage from "./feature/FAQ/faq.page";
 
 
 function App() {
@@ -32,6 +35,9 @@ function App() {
                 <Route path="/subscription" element={<SubscriptionPage />} />
 
                 <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+                <Route path="/terms-and-conditions" element={<TermsAndCondition />} />
+                <Route path="/about" element={<AboutPage />} />
+                <Route path="/faq" element={<FAQpage />} />
 
 
                 <Route path="*" element={<div>Page Not Found</div>} />

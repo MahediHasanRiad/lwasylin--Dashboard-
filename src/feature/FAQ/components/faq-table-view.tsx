@@ -1,7 +1,8 @@
-import { MoreVertical } from "lucide-react"; // Elegant action dots icon
-import { ContractorActionBtn } from "./contractor-action-btn";
+import { MoreVertical } from "lucide-react";
+import { FaqActionBtn } from "./faq-action-btn";
 
-export default function ContractorTableView({
+
+export default function FaqTableView({
   data,
   headersData,
 }: {
@@ -12,7 +13,7 @@ export default function ContractorTableView({
     console.log(data);
   };
 
-  console.log("contractor data", data.allContractors);
+console.log(data)
   return (
     <div className="w-full overflow-hidden border border-[#e2e8f0] rounded-[20px] bg-white shadow-sm">
       <div className="w-full overflow-x-auto">
@@ -32,44 +33,37 @@ export default function ContractorTableView({
           </thead>
 
           <tbody className="divide-y divide-[#e2e8f0]">
-            {data?.allContractors?.map((row) => (
+            {data?.map((row) => (
               <tr
                 key={row.id}
                 className="hover:bg-[#f8fafc] transition-colors duration-150"
               >
                 <td className="p-4 pl-6 text-[15px] font-medium text-[#475569]">
-                  {row.user.name}
+                  {row.id}
+                </td>
+                <td className="p-4 pl-6 text-[15px] font-medium text-[#475569]">
+                  {row.question}
                 </td>
                 <td className="p-4 text-[15px] text-[#475569]">
-                  {row.user.phone}
-                </td>
-
-                {/* Units */}
-                <td className="p-4 text-[15px] text-[#475569]">
-                  {row.user.email}
-                </td>
-
-                {/* House Manager */}
-                <td className="p-4 text-[15px] text-[#475569]">
-                  {row.specialty}
+                  {row.answer}
                 </td>
 
                 {/* Status Pills Block */}
                 <td className="p-4">
                   <span
                     className={`inline-flex items-center justify-center px-3 py-1 text-xs font-semibold rounded-full border ${
-                      row.user.status === "ACTIVE"
+                      row.status === "ACTIVE"
                         ? "bg-[#dcfce7] text-[#15803d] border-[#bbf7d0]"
                         : "bg-[#fef9c3] text-[#ca8a04] border-[#fef08a]"
                     }`}
                   >
-                    {row.user.status}
+                    {row.status}
                   </span>
                 </td>
 
                 {/* Action Row Interactions Button */}
                 <td className="p-4 pr-6 text-center">
-                  <ContractorActionBtn
+                  <FaqActionBtn
                     Icon={MoreVertical}
                     // defaultValue={""}
                     onValueChange={selectHandler}

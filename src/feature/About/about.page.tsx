@@ -1,26 +1,25 @@
 import { Button } from "@/components/ui/button";
-import { ButtonField } from "@/shared/button";
 import ContentEditor from "@/shared/content-editor";
 import { SelectField } from "@/shared/select";
 
-function PrivacyPolicyPage() {
+function AboutPage() {
   const selectHandler = (data) => {
     console.log(data);
   };
 
   const onChangeHandler = (data) => {
-    console.log(data)
-  }
+    console.log(data);
+  };
 
   const handleSubmit = () => {
-    console.log('submit')
-  }
+    console.log("submit");
+  };
 
   return (
     <section>
       {/* top bar  */}
       <div>
-        <h1 className="text-4xl">Privacy Policy</h1>
+        <h1 className="text-4xl">About</h1>
 
         {/* select  */}
         <section className="w-[50%] md:w-[20%] my-4">
@@ -35,12 +34,13 @@ function PrivacyPolicyPage() {
         {/* editor  */}
         <section>
           <ContentEditor onChangeHandler={onChangeHandler} />
-          <Button onClick={handleSubmit} className="float-right mt-4 p-6">Update</Button>
+          <Button onClick={handleSubmit} className="float-right mt-4 p-6">
+            Update
+          </Button>
         </section>
-
       </div>
     </section>
   );
 }
 
-export default PrivacyPolicyPage;
+export default AboutPage;
