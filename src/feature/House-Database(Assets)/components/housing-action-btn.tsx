@@ -26,7 +26,7 @@ export function HousingActionBtn({
     <>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <button className="w-10 h-10 p-0 flex items-center justify-center rounded-xl bg-transparent border border-gray-300 text-gray-700 hover:bg-gray-100 cursor-pointer transition-colors duration-150">
+          <button className="w-10 h-10 p-0 flex items-center justify-center rounded-xl bg-transparent text-gray-700 hover:bg-gray-100 cursor-pointer transition-colors duration-150">
             <Icon className="w-5 h-5" />
             <span className="sr-only">Toggle dropdown</span>
           </button>

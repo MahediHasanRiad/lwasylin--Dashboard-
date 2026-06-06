@@ -8,12 +8,20 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { Field, FieldGroup } from "@/components/ui/field";
+import { Field, FieldGroup, FieldLabel } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { SelectField } from "@/shared/select";
 import { type LucideIcon } from "lucide-react";
 import { useState } from "react";
+import type { AddCommunitySchemaType } from "../schema/add-community.schema";
+import { useForm, Controller, type SubmitHandler } from "react-hook-form";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 type VariantType =
   | "custom"
@@ -33,20 +41,6 @@ interface AddCommunityDialogProps {
   onOpenChange?: (open: boolean) => void;
 }
 
-interface CommunityFormData {
-  communityName: string;
-  location: string;
-  status: string;
-  houseManager: string;
-}
-
-const initialValue: CommunityFormData = {
-  communityName: "",
-  location: "",
-  status: "",
-  houseManager: "",
-};
-
 export function AddCommunityDialog({
   variantType = "custom",
   Icon,
@@ -56,7 +50,7 @@ export function AddCommunityDialog({
 }: AddCommunityDialogProps) {
 
   const [internalOpen, setInternalOpen] = useState(false);
-  const [community, setCommunity] = useState<CommunityFormData>(initialValue);
+  const { control, handleSubmit } = useForm<AddCommunitySchemaType>();
 
   const isOpen = controlledOpen ?? internalOpen;
 
@@ -65,20 +59,11 @@ export function AddCommunityDialog({
     onOpenChange?.(val);
   }
 
-  function selectHandler(name: string, value: string) {
-    setCommunity((prev) => ({ ...prev, [name]: value }));
-  }
-
-  function onChangeHandler(e: React.ChangeEvent<HTMLInputElement>) {
-    const { name, value } = e.target;
-    setCommunity((prev) => ({ ...prev, [name]: value }));
-  }
-
-  function submitHandler() {
-    console.log("value", community);
+  const submitHandler: SubmitHandler<AddCommunitySchemaType> = (data) => {
+    console.log("value", data);
     handleOpenChange(false);
-  }
-console.log('community', community)
+  };
+
   return (
     <Dialog open={isOpen} onOpenChange={handleOpenChange}>
       {controlledOpen === undefined && (
@@ -94,42 +79,72 @@ console.log('community', community)
           <DialogTitle>Add Community</DialogTitle>
         </DialogHeader>
 
-        <form>
+        <form onSubmit={handleSubmit(submitHandler)}>
           <FieldGroup>
             <Field>
-              <Label htmlFor="communityName">Community Name</Label>
-              <Input
-                id="communityName"
-                name="communityName"
-                defaultValue=""
-                onChange={onChangeHandler}
+              <FieldLabel htmlFor="input-demo-api-key">
+                Community Name
+              </FieldLabel>
+              <Controller
+                name="name"
+                control={control}
+                rules={{ required: true }}
+                render={({ field }) => <Input {...field} />}
               />
             </Field>
             <Field>
               <Label htmlFor="location">Location</Label>
-              <Input
-                id="location"
+              <Controller
                 name="location"
-                defaultValue=""
-                onChange={onChangeHandler}
+                control={control}
+                rules={{ required: true }}
+                render={({ field }) => <Input {...field} />}
               />
             </Field>
             <Field>
-              <SelectField
-                label="Status"
+              <Label htmlFor="status">Status</Label>
+              <Controller
                 name="status"
-                selectHandler={selectHandler}
-                defaultValue=""
-                items={["A", "B", "C"]}
+                control={control}
+                render={({ field: { value, onChange, disabled } }) => (
+                  <Select
+                    value={value}
+                    onValueChange={onChange}
+                    disabled={disabled}
+                  >
+                    <SelectTrigger id="status">
+                      <SelectValue placeholder="Select status" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="PENDING">PENDING</SelectItem>
+                      <SelectItem value="ACTIVE">ACTIVE</SelectItem>
+                      <SelectItem value="SUSPEND">SUSPEND</SelectItem>
+                    </SelectContent>
+                  </Select>
+                )}
               />
             </Field>
             <Field>
-              <SelectField
-                label="House Manager"
+              <Label htmlFor="houseManager">House Manager</Label>
+              <Controller
                 name="houseManager"
-                selectHandler={selectHandler}
-                defaultValue=""
-                items={["Riad", "Shamim", "Tamim"]}
+                control={control}
+                render={({ field: { value, onChange, disabled } }) => (
+                  <Select
+                    value={value}
+                    onValueChange={onChange}
+                    disabled={disabled}
+                  >
+                    <SelectTrigger id="status">
+                      <SelectValue placeholder="Select Manager" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="PENDING">Riad</SelectItem>
+                      <SelectItem value="ACTIVE">Shamim</SelectItem>
+                      <SelectItem value="SUSPEND">Tamim</SelectItem>
+                    </SelectContent>
+                  </Select>
+                )}
               />
             </Field>
           </FieldGroup>
@@ -138,9 +153,7 @@ console.log('community', community)
             <DialogClose asChild>
               <Button variant="outline">Cancel</Button>
             </DialogClose>
-            <Button type="button" onClick={submitHandler}>
-              Save changes
-            </Button>
+            <Button type="submit">Save changes</Button>
           </DialogFooter>
         </form>
       </DialogContent>
