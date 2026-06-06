@@ -41,7 +41,7 @@ export function PackagesDialog({
   variant,
 }: PackagesDialogProps) {
 
-  
+
   const [features, setFeatures] = useState<string[]>(DEFAULT_FEATURES);
   const [newBenefit, setNewBenefit] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
@@ -198,7 +198,7 @@ export function PackagesDialog({
                   render={({ field: {onChange, value} }) => (
                     <Select value={value} onValueChange={onChange}>
                       <SelectTrigger className="text-sm">
-                        <SelectValue placeholder="select package" />
+                        <SelectValue placeholder="select Duration" />
                       </SelectTrigger>
                       <SelectContent>
                         <SelectItem value="month">Month</SelectItem>

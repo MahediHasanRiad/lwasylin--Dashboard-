@@ -18,7 +18,10 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import ErrorMsg from "@/shared/error-message";
 import type { LucideIcon } from "lucide-react";
+import { useForm, Controller, type SubmitHandler } from "react-hook-form";
+import {z} from 'zod'
 
 interface AddIssueType {
   variant?: any;
@@ -26,13 +29,18 @@ interface AddIssueType {
   text: string;
 }
 
+const AddIssueSchema = z.object({
+  category: z.string(),
+  status: z.string()
+})
+type AddIssueSchemaType = z.infer<typeof AddIssueSchema>
+
 export function AddIssue({ variant = "default", Icon, text }: AddIssueType) {
   
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const formData = new FormData(e.currentTarget);
-    // Handle form submission logic here
-    console.log(Object.fromEntries(formData));
+  const {control, handleSubmit, formState: {errors}} = useForm<AddIssueSchemaType>()
+
+  const onHandleSubmit: SubmitHandler<AddIssueSchemaType> = (data) => {
+    console.log(data);
   };
 
   return (
@@ -48,11 +56,7 @@ export function AddIssue({ variant = "default", Icon, text }: AddIssueType) {
         <DialogHeader>
           <DialogTitle className="text-xl font-semibold">Create New Issue</DialogTitle>
         </DialogHeader>
-
-        {/* Form correctly moved inside DialogContent */}
-        <form onSubmit={handleSubmit} className="space-y-6 pt-2">
-          
-          {/* Two-column layout for select elements */}
+        <form onSubmit={handleSubmit(onHandleSubmit)} className="space-y-6 pt-2">
           <div className="grid grid-cols-2 gap-4">
             
             {/* Issue Category Select */}
@@ -60,19 +64,26 @@ export function AddIssue({ variant = "default", Icon, text }: AddIssueType) {
               <Label htmlFor="issue-type" className="text-sm font-medium text-muted-foreground">
                 Issue Category
               </Label>
-              <Select name="issueType" defaultValue="plumbing">
-                <SelectTrigger id="issue-type" className="w-full">
-                  <SelectValue placeholder="Select type" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectGroup>
-                    <SelectLabel>Categories</SelectLabel>
-                    <SelectItem value="plumbing">Plumbing</SelectItem>
-                    <SelectItem value="construction">Construction</SelectItem>
-                    <SelectItem value="electrical">Electrical</SelectItem>
-                  </SelectGroup>
-                </SelectContent>
-              </Select>
+              <Controller
+                name="category"
+                control={control}
+                rules={{required: {value: true, message: 'Select Category !!!'}}}
+                render={({ field: { onChange, value } }) => (
+                  <Select value={value} onValueChange={onChange}>
+                    <SelectTrigger className="w-full max-w-48">
+                      <SelectValue placeholder="Category" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectGroup>
+                        <SelectLabel>Category</SelectLabel>
+                        <SelectItem value="ACTIVE">ACTIVE</SelectItem>
+                        <SelectItem value="PENDING">PENDING</SelectItem>
+                      </SelectGroup>
+                    </SelectContent>
+                  </Select>
+                )}
+              />
+              {errors.category && <ErrorMsg error={errors.category.message} />}
             </div>
 
             {/* Status Select */}
@@ -80,19 +91,26 @@ export function AddIssue({ variant = "default", Icon, text }: AddIssueType) {
               <Label htmlFor="issue-status" className="text-sm font-medium text-muted-foreground">
                 Initial Status
               </Label>
-              <Select name="status" defaultValue="open">
-                <SelectTrigger id="issue-status" className="w-full">
-                  <SelectValue placeholder="Select status" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectGroup>
-                    <SelectLabel>Status Options</SelectLabel>
-                    <SelectItem value="open">Open</SelectItem>
-                    <SelectItem value="in-progress">In Progress</SelectItem>
-                    <SelectItem value="resolved">Resolved</SelectItem>
-                  </SelectGroup>
-                </SelectContent>
-              </Select>
+              <Controller
+                name="status"
+                control={control}
+                rules={{required: {value: true, message: 'Select Status !!!'}}}
+                render={({ field: { onChange, value } }) => (
+                  <Select value={value} onValueChange={onChange}>
+                    <SelectTrigger className="w-full max-w-48">
+                      <SelectValue placeholder="Status" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectGroup>
+                        <SelectLabel>Status</SelectLabel>
+                        <SelectItem value="ACTIVE">ACTIVE</SelectItem>
+                        <SelectItem value="PENDING">PENDING</SelectItem>
+                      </SelectGroup>
+                    </SelectContent>
+                  </Select>
+                )}
+              />
+              {errors.status && <ErrorMsg error={errors.status.message} />}
             </div>
 
           </div>
