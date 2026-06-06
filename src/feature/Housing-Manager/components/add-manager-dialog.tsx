@@ -67,26 +67,18 @@ export function AddManagerDialog({
           </DialogHeader>
           <FieldGroup>
             <Field>
-              <Label htmlFor="name">Manager Name *</Label>
+              <Label htmlFor="name">Name</Label>
               <Controller
                 name="name"
                 control={control}
                 rules={{
-                  required: { value: true, message: "Select manager Name !!!" },
+                  required: { value: true, message: "Name are required !!!" },
                 }}
-                render={({ field: { onChange, value } }) => (
-                  <Select value={value} onValueChange={onChange}>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Manager Name" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectGroup>
-                        <SelectItem value="Riad">Riad</SelectItem>
-                        <SelectItem value="Shamim">Shamim</SelectItem>
-                        <SelectItem value="Tamim">Tamim</SelectItem>
-                      </SelectGroup>
-                    </SelectContent>
-                  </Select>
+                render={({ field }) => (
+                  <Input
+                    {...field}
+                    className={`${errors.name && "border-red-700"}`}
+                  />
                 )}
               />
               {errors.name && <ErrorMsg error={errors.name.message} />}
