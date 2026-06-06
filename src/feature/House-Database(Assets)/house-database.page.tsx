@@ -7,6 +7,7 @@ import HousingTableViewField from "./components/housing-table-view";
 import { PaginationField } from "@/shared/pagination";
 import { propertyData } from "./data/property-data";
 
+
 const headersData = [
   "Houses Name/ID",
   "House Location",
@@ -27,6 +28,7 @@ export const houseDatabaseData = [
 ];
 
 function HouseDatabase() {
+
   const [open, setOpen] = useState(false);
 
   const onSubmit = (data) => {
@@ -36,7 +38,7 @@ function HouseDatabase() {
   return (
     <section>
       {/* top bar  */}
-      <section className="flex justify-between my-8">
+      <section className="flex justify-between my-8 items-center">
         <TopBar
           title="Dashboard Overview"
           description="Welcome back! Here's yours system overview"
