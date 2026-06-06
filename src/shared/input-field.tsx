@@ -22,7 +22,7 @@ export function InputField({
   
 
   return (
-    <section className="my-4">
+    <section className="">
       <label
         className={`text-[12px] md:text-sm ${readonly == true ? "text-gray-700" : "text-black"}`}
         htmlFor={label}
@@ -37,7 +37,7 @@ export function InputField({
         onChange={onChange}
         readOnly={readonly}
         placeholder={placeholder}
-        className="w-full border mt-2 border-card-0 rounded-lg px-4 py-4 text-sm focus:outline-none focus:border-[#D4A017]/50 transition-colors"
+        className="w-full border mt-2 rounded-lg px-2 py-2 text-sm focus:outline-none focus:border-[#D4A017]/50 transition-colors"
       />
     </section>
   );
