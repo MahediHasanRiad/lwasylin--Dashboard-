@@ -12,8 +12,19 @@ import {
 import { Field, FieldGroup } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { SelectField } from "@/shared/select";
 import { Info, type LucideIcon } from "lucide-react";
+import { useForm, Controller, type SubmitHandler } from "react-hook-form";
+import type { HouseManagerSchemaType } from "../schema/house-manager.schema";
+import ErrorMsg from "@/shared/error-message";
 
 interface AddManagerDialogType {
   open?: boolean;
@@ -30,55 +41,147 @@ export function AddManagerDialog({
   variant,
   Icon,
 }: AddManagerDialogType) {
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<HouseManagerSchemaType>();
 
-  const selectHandler = (data) => {
-    console.log(data);
+  const submitHandler: SubmitHandler<HouseManagerSchemaType> = (data) => {
+    onOpenChange?.(false);
+    console.log("house-manager", data);
   };
 
-  const submitHandler = () => {
-    onOpenChange?.(false)
-  }
-
   return (
-    <Dialog  open={open} onOpenChange={onOpenChange}>
-      <form>
-        <DialogTrigger asChild>
-          <Button variant={variant}>
-            {Icon && <Icon />} {title}
-          </Button>
-        </DialogTrigger>
-        <DialogContent className="sm:max-w-sm">
+    <Dialog open={open} onOpenChange={onOpenChange}>
+      <DialogTrigger asChild>
+        <Button variant={variant}>
+          {Icon && <Icon />} {title}
+        </Button>
+      </DialogTrigger>
+      <DialogContent className="sm:max-w-sm">
+        <form onSubmit={handleSubmit(submitHandler)}>
           <DialogHeader>
             <DialogTitle>{title}</DialogTitle>
             <DialogDescription></DialogDescription>
           </DialogHeader>
           <FieldGroup>
             <Field>
-              <Label htmlFor="name-1">Full Name</Label>
-              <Input id="name-1" name="fullName" defaultValue="" />
+              <Label htmlFor="name">Manager Name *</Label>
+              <Controller
+                name="name"
+                control={control}
+                rules={{
+                  required: { value: true, message: "Select manager Name !!!" },
+                }}
+                render={({ field: { onChange, value } }) => (
+                  <Select value={value} onValueChange={onChange}>
+                    <SelectTrigger>
+                      <SelectValue placeholder="Manager Name" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectGroup>
+                        <SelectItem value="Riad">Riad</SelectItem>
+                        <SelectItem value="Shamim">Shamim</SelectItem>
+                        <SelectItem value="Tamim">Tamim</SelectItem>
+                      </SelectGroup>
+                    </SelectContent>
+                  </Select>
+                )}
+              />
+              {errors.name && <ErrorMsg error={errors.name.message} />}
             </Field>
             <Field>
               <Label htmlFor="username-1">Gmail</Label>
-              <Input id="username-1" name="gmail" defaultValue="" />
+              <Controller
+                name="email"
+                control={control}
+                rules={{
+                  required: { value: true, message: "Gmail are required !!!" },
+                }}
+                render={({ field }) => (
+                  <Input
+                    {...field}
+                    className={`${errors.email && "border-red-700"}`}
+                  />
+                )}
+              />
+              {errors.email && <ErrorMsg error={errors.email.message} />}
             </Field>
             <Field>
-              <Label htmlFor="username-1">Community Name</Label>
-              <SelectField
-                items={["Riad", "Shamim", "Tamim"]}
+              <Label htmlFor="name">Community Name *</Label>
+              <Controller
                 name="communityName"
-                selectHandler={selectHandler}
+                control={control}
+                rules={{
+                  required: {
+                    value: true,
+                    message: "Select Community Name !!!",
+                  },
+                }}
+                render={({ field: { onChange, value } }) => (
+                  <Select value={value} onValueChange={onChange}>
+                    <SelectTrigger>
+                      <SelectValue placeholder="Community Name" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectGroup>
+                        <SelectItem value="Riad">Riad</SelectItem>
+                        <SelectItem value="Shamim">Shamim</SelectItem>
+                        <SelectItem value="Tamim">Tamim</SelectItem>
+                      </SelectGroup>
+                    </SelectContent>
+                  </Select>
+                )}
               />
+              {errors.communityName && (
+                <ErrorMsg error={errors.communityName.message} />
+              )}
             </Field>
             <hr />
             <h1 className="text-lg">Login Credential</h1>
             <section className="flex justify-between gap-2">
               <Field>
                 <Label htmlFor="username-1">Gmail</Label>
-                <Input id="username-1" name="gmail" defaultValue="" />
+                <Controller
+                  name="email"
+                  control={control}
+                  rules={{
+                    required: {
+                      value: true,
+                      message: "Gmail are required !!!",
+                    },
+                  }}
+                  render={({ field }) => (
+                    <Input
+                      {...field}
+                      className={`${errors.email && "border-red-700"}`}
+                    />
+                  )}
+                />
+                {errors.email && <ErrorMsg error={errors.email.message} />}
               </Field>
               <Field>
                 <Label htmlFor="username-1">Password</Label>
-                <Input id="username-1" name="gmail" defaultValue="" />
+                <Controller
+                  name="password"
+                  control={control}
+                  rules={{
+                    required: {
+                      value: true,
+                      message: "Password are required !!!",
+                    },
+                  }}
+                  render={({ field }) => (
+                    <Input
+                      {...field}
+                      className={`${errors.password && "border-red-700"}`}
+                    />
+                  )}
+                />
+                {errors.password && (
+                  <ErrorMsg error={errors.password.message} />
+                )}
               </Field>
             </section>
           </FieldGroup>
@@ -86,7 +189,7 @@ export function AddManagerDialog({
             <DialogClose asChild>
               <Button variant="outline">Cancel</Button>
             </DialogClose>
-            <Button type="submit" onClick={submitHandler}>Save changes</Button>
+            <Button type="submit">Save changes</Button>
           </DialogFooter>
           <section className="flex gap-2">
             <span>
@@ -97,8 +200,8 @@ export function AddManagerDialog({
               upon saving.
             </span>
           </section>
-        </DialogContent>
-      </form>
+        </form>
+      </DialogContent>
     </Dialog>
   );
 }
