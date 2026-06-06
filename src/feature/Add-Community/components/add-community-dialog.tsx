@@ -22,6 +22,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import ErrorMsg from "@/shared/error-message";
 
 type VariantType =
   | "custom"
@@ -50,7 +51,7 @@ export function AddCommunityDialog({
 }: AddCommunityDialogProps) {
 
   const [internalOpen, setInternalOpen] = useState(false);
-  const { control, handleSubmit } = useForm<AddCommunitySchemaType>();
+  const { control, handleSubmit, formState: {errors} } = useForm<AddCommunitySchemaType>();
 
   const isOpen = controlledOpen ?? internalOpen;
 
@@ -88,31 +89,35 @@ export function AddCommunityDialog({
               <Controller
                 name="name"
                 control={control}
-                rules={{ required: true }}
-                render={({ field }) => <Input {...field} />}
+                rules={{ required: {value: true, message: 'Name are required !!!'} }}
+                render={({ field }) => <Input {...field} className={`${errors.name && 'border-red-500'}`} />}
               />
+              {errors.name && <ErrorMsg error={errors.name.message} />}
             </Field>
             <Field>
               <Label htmlFor="location">Location</Label>
               <Controller
                 name="location"
                 control={control}
-                rules={{ required: true }}
-                render={({ field }) => <Input {...field} />}
+                rules={{ required: {value: true, message: 'Location are required !!!'} }}
+                render={({ field }) => <Input {...field} className={`${errors.location && 'border-red-500'}`}/>}
               />
+              {errors.location && <ErrorMsg error={errors.location.message} />}
             </Field>
             <Field>
               <Label htmlFor="status">Status</Label>
               <Controller
                 name="status"
                 control={control}
+                defaultValue="PENDING"
                 render={({ field: { value, onChange, disabled } }) => (
                   <Select
                     value={value}
                     onValueChange={onChange}
                     disabled={disabled}
+                    
                   >
-                    <SelectTrigger id="status">
+                    <SelectTrigger id="status" className={`${errors.status && 'border-red-500'}`}>
                       <SelectValue placeholder="Select status" />
                     </SelectTrigger>
                     <SelectContent>
@@ -129,13 +134,14 @@ export function AddCommunityDialog({
               <Controller
                 name="houseManager"
                 control={control}
+                rules={{required: {value: true, message: 'House manager are required !!!'}}}
                 render={({ field: { value, onChange, disabled } }) => (
                   <Select
                     value={value}
                     onValueChange={onChange}
                     disabled={disabled}
                   >
-                    <SelectTrigger id="status">
+                    <SelectTrigger id="status" className={`${errors.houseManager && 'border-red-500'}`}>
                       <SelectValue placeholder="Select Manager" />
                     </SelectTrigger>
                     <SelectContent>
@@ -146,6 +152,7 @@ export function AddCommunityDialog({
                   </Select>
                 )}
               />
+              {errors.houseManager && <ErrorMsg error={errors.houseManager.message} />}
             </Field>
           </FieldGroup>
 
