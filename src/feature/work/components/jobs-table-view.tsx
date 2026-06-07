@@ -8,9 +8,8 @@ export default function JobsTableViewField({
   data: any;
   headersData: string[];
 }) {
-  const selectHandler = (data) => {
-    console.log(data);
-  };
+
+  
   console.log("jobs data", data);
   return (
     <div className="w-full overflow-hidden border border-[#e2e8f0] rounded-[20px] bg-white shadow-sm">

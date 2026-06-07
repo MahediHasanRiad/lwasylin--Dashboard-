@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { type LucideIcon } from "lucide-react";
 import {
   DropdownMenu,
@@ -7,7 +6,6 @@ import {
   DropdownMenuLabel,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { AddContractorDialog } from "@/feature/contractor/components/add-contractor-dialog";
 import { AddFAQ } from "./add-faq";
 
 interface ContractorActionBtnProps {

@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { type LucideIcon } from "lucide-react";
 import {
   DropdownMenu,
@@ -21,7 +20,7 @@ export function ContractorActionBtn({
   label = "Options",
   onValueChange,
 }: ContractorActionBtnProps) {
-  const [editOpen, setEditOpen] = useState(false);
+
 
   return (
     <>

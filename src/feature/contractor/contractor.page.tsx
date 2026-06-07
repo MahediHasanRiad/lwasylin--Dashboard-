@@ -1,4 +1,3 @@
-import { PendingBtn } from "@/shared/button";
 import TopBar from "../Add-Community/components/top-bar";
 import { Plus } from "lucide-react";
 import { AddContractorDialog } from "./components/add-contractor-dialog";
@@ -8,9 +7,7 @@ import { contractorData } from "./data/contractor-data";
 import ContractorTableView from "./components/contractor-table-view";
 
 function ContractorPage() {
-  const handleSubmit = () => {
-    console.log("this is handle submit");
-  };
+
 
   return (
     <section>
@@ -43,7 +40,6 @@ function ContractorPage() {
           <SearchPart
             value={""}
             onChange={""}
-            onFilterClick={""}
             placeholder="Search by name, location"
           />
         </section>
@@ -52,14 +48,6 @@ function ContractorPage() {
         <section className="w-full mt-4">
           <ContractorTableView
             data={contractorData}
-            headersData={[
-              "Vendor",
-              "Contact",
-              "Email",
-              "Skill / Service",
-              "Status",
-              "Actions",
-            ]}
           />
         </section>
 

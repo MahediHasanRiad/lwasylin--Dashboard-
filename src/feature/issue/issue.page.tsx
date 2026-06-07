@@ -25,7 +25,6 @@ function IssuePage() {
             <SearchPart
               value={""}
               onChange={""}
-              onFilterClick={""}
               placeholder="Search by name, location"
             />
           </section>

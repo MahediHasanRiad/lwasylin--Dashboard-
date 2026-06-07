@@ -1,5 +1,4 @@
 import { Button } from "@/components/ui/button";
-import { ButtonField } from "@/shared/button";
 import ContentEditor from "@/shared/content-editor";
 import { SelectField } from "@/shared/select";
 
@@ -26,7 +25,7 @@ function PrivacyPolicyPage() {
         <section className="w-[50%] md:w-[20%] my-4">
           <p className="text-lg mb-2">For who</p>
           <SelectField
-            name="privacyPolicy"
+            name="MANAGER"
             selectHandler={selectHandler}
             items={["House Manager", "Contractor", "Other"]}
           />

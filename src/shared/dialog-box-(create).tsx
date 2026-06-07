@@ -13,17 +13,14 @@ import { Field, FieldGroup } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { SelectField } from "./select";
-import type { FAQType } from "@/feature/FAQ/FAQ.page";
 import { useState, type ChangeEvent, } from "react";
 import { toast } from "sonner";
-import { useDispatch } from "react-redux"
-import type { AppDispatch } from "@/store/store";
-import { createFAQthunk } from "@/feature/FAQ/redux/create-FAQ.thunk";
+
 
 export interface CreateFAQInitialValueType {
   question: string;
   answer: string;
-  category: FAQType;
+  category: any;
   getId?: number | null,
   text?: string
 }
@@ -37,9 +34,9 @@ const initialValue: CreateFAQInitialValueType  = {
 export function DialogBoxField({ question, answer, category, text = 'ADD' }: CreateFAQInitialValueType) {
 
   const [inputValue, setInputValue] = useState(initialValue);
-  const dispatch =  useDispatch<AppDispatch>()
 
-  const selectHandler = (categoryValue: FAQType) => {
+
+  const selectHandler = (categoryValue: string) => {
     setInputValue((prev) => ({
       ...prev,
       category: categoryValue,
@@ -59,7 +56,7 @@ export function DialogBoxField({ question, answer, category, text = 'ADD' }: Cre
     e.preventDefault();
     
     try {
-      await dispatch(createFAQthunk(inputValue))
+      // await dispatch(createFAQthunk(inputValue))
       toast.success('Successfully create an FAQ !!!')
     } catch (error) {
       toast.error('Failed to create FAQ !!!')
@@ -103,7 +100,7 @@ export function DialogBoxField({ question, answer, category, text = 'ADD' }: Cre
               />
             </Field>
             <Field>
-              <SelectField selectHandler={selectHandler} defaultValue={category} />
+              <SelectField name="MANAGER" selectHandler={selectHandler} defaultValue={category} items={[]} />
             </Field>
           </FieldGroup>
           <DialogFooter>

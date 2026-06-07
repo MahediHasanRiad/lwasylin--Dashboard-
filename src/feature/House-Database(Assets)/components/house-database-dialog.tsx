@@ -19,7 +19,6 @@ import {
 } from "@/components/ui/dialog";
 import type {
   HouseDatabaseDialogProps,
-  HouseFormData,
 } from "../house-database-type";
 import type { HouseDatabaseSchemaType } from "../schema/house-database.schema";
 import { useForm, Controller, type SubmitHandler } from "react-hook-form";
@@ -29,10 +28,6 @@ import { Field, FieldLabel } from "@/components/ui/field";
 export default function HouseDatabaseDialogField({
   open,
   onOpenChange,
-  defaultValues = {},
-  nationOptions = [],
-  managerOptions = [],
-  onSubmit,
 }: HouseDatabaseDialogProps) {
   const {
     control,

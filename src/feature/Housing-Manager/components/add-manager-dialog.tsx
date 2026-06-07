@@ -20,7 +20,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { SelectField } from "@/shared/select";
 import { Info, type LucideIcon } from "lucide-react";
 import { useForm, Controller, type SubmitHandler } from "react-hook-form";
 import type { HouseManagerSchemaType } from "../schema/house-manager.schema";

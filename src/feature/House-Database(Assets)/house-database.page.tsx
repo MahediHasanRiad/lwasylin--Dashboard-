@@ -66,7 +66,6 @@ function HouseDatabase() {
           <SearchPart
             value={""}
             onChange={""}
-            onFilterClick={""}
             placeholder="Search by name, location"
           />
         </section>

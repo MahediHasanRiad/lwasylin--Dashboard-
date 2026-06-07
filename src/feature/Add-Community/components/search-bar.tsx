@@ -1,17 +1,12 @@
 import { Filter } from "lucide-react";
 import { IconDropDown } from "./icon-drop-down";
 
-const FilterItems = ["Active", "Suspend"];
 
 export default function SearchPart({
   value,
   onChange,
-  onFilterClick,
   placeholder = "Search by name, location",
 }) {
-  const selectHandler = (data) => {
-    console.log(data);
-  };
 
   return (
     <div className="w-full  font-sans">

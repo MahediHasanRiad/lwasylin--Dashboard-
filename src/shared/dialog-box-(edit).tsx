@@ -13,11 +13,7 @@ import { Field, FieldGroup } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { SelectField } from "./select";
-import type { FAQType } from "@/feature/FAQ/FAQ.page";
 import { useState, type ChangeEvent } from "react";
-import type { AppDispatch } from "@/store/store";
-import { useDispatch } from "react-redux";
-import { UpdateFAQThunk } from "@/feature/FAQ/redux/update-FAQ.thunk";
 import { toast } from "sonner";
 
 
@@ -25,7 +21,7 @@ export interface EditFAQInitialValueType {
   id: number;
   question: string;
   answer: string;
-  category: FAQType;
+  category: any;
   getId?: number | null;
   text?: string;
 }
@@ -38,7 +34,7 @@ const initialValue: EditFAQInitialValueType = {
 };
 
 export function EditDialogBoxField({
-  id,
+  // id,
   question,
   answer,
   category,
@@ -46,9 +42,9 @@ export function EditDialogBoxField({
 }: EditFAQInitialValueType) {
     
   const [inputValue, setInputValue] = useState<EditFAQInitialValueType>(initialValue);
-  const dispatch = useDispatch<AppDispatch>();
-
-  const selectHandler = (categoryValue: FAQType) => {
+  // const dispatch = useDispatch<AppDispatch>();
+console.log(inputValue)
+  const selectHandler = (categoryValue: any) => {
     setInputValue((prev) => ({
       ...prev,
       category: categoryValue,
@@ -68,9 +64,9 @@ export function EditDialogBoxField({
     e.preventDefault();
 
     try {
-      await dispatch(UpdateFAQThunk({id: Number(id), inputValue })).unwrap();
-      toast.success("Successfully update FAQ !!!");
-      setInputValue(initialValue);
+      // await dispatch(UpdateFAQThunk({id: Number(id), inputValue })).unwrap();
+      // toast.success("Successfully update FAQ !!!");
+      // setInputValue(initialValue);
     } 
     catch (error) {
       toast.error("Failed to update FAQ !!!");
@@ -112,6 +108,8 @@ export function EditDialogBoxField({
             </Field>
             <Field>
               <SelectField
+               name="name"
+               items={[]}
                 selectHandler={selectHandler}
                 defaultValue={category}
               />

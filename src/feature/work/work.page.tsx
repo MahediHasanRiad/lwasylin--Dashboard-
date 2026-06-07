@@ -23,7 +23,6 @@ function WorkPage() {
         <section>
           <SearchPart
             onChange={onChangeHandler}
-            onFilterClick={""}
             value={""}
           />
         </section>

@@ -1,7 +1,6 @@
 import { Plus } from "lucide-react";
 import TopBar from "../Add-Community/components/top-bar";
 import { AddManagerDialog } from "./components/add-manager-dialog";
-import { PendingBtn } from "@/shared/button";
 import SearchPart from "../Add-Community/components/search-bar";
 import HousingManagerViewField from "./components/table-view";
 import { managerData } from "./data/housing-manager-data";
@@ -10,10 +9,6 @@ import { PaginationField } from "@/shared/pagination";
 
 function HousingManager() {
   
-
-  const handleSubmit = () => {
-    console.log("this is submit");
-  };
 
   const onChangeHandler = (data) => {
     console.log(data);
@@ -49,7 +44,7 @@ function HousingManager() {
       {/* table */}
       <section className="p-4 bg-[#e6eaef] rounded-[20px] mt-10 space-y-4">
         {/* search  */}
-        <SearchPart onChange={onChangeHandler} onFilterClick={""} value={""} />
+        <SearchPart onChange={onChangeHandler} value={""} />
 
         {/* table  */}
         <HousingManagerViewField

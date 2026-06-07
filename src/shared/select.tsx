@@ -11,7 +11,7 @@ interface SelectType {
   label?: string;
   name: string;
   selectHandler: (name: string, value: string) => void;
-  defaultValue?: string;
+  defaultValue?: 'MANAGER';
   items: string[];
 }
 

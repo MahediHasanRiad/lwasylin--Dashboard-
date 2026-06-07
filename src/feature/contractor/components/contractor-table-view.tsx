@@ -3,10 +3,8 @@ import { ContractorActionBtn } from "./contractor-action-btn";
 
 export default function ContractorTableView({
   data,
-  headersData,
 }: {
   data: any;
-  headersData: string[];
 }) {
   const selectHandler = (data) => {
     console.log(data);
