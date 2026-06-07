@@ -11,7 +11,7 @@ const HeadersData = ['Community name', 'Location name', 'Units', 'House manager'
 
 function AddCommunity() {
   return (
-    <section className="p-4">
+    <section className="p-4 overflow-hidden">
       {/* top bar  */}
       <section className="flex justify-between my-8">
         <TopBar

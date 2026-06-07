@@ -69,7 +69,7 @@ console.log('property data', data)
                 </td>
 
                 {/* Action Row Interactions Button */}
-                <td className="p-4 pr-6 text-center">
+                <td className="p-4 pr-6 text-center -translate-y-1/12">
                   <HousingActionBtn
                     Icon={MoreVertical}
                     // defaultValue={""}

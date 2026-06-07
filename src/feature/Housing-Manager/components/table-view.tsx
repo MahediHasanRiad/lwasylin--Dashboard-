@@ -70,7 +70,7 @@ export default function HousingManagerViewField({
                 </td>
 
                 <td className="p-4 pr-6">
-                  <div className="flex items-center justify-center w-full">
+                  <div className="flex items-center justify-center w-full -translate-y-1/12">
                     <HousingManagerActionBtn
                       Icon={MoreVertical}
                       onValueChange={() => selectHandler(row)}

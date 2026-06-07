@@ -70,7 +70,7 @@ export default function TableViewField({
                 </td>
 
                 {/* Action Row Interactions Button */}
-                <td className="p-4 pr-6 text-center">
+                <td className=" text-center -translate-y-1/12 ">
                   <ActionBtnField
                     Icon={MoreVertical}
                     // defaultValue={""}

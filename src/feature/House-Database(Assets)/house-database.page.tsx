@@ -38,13 +38,14 @@ function HouseDatabase() {
   return (
     <section>
       {/* top bar  */}
-      <section className="flex justify-between my-8 items-center">
+      <section className="flex justify-between my-8 items-center p-4">
         <TopBar
           title="Dashboard Overview"
           description="Welcome back! Here's yours system overview"
         />
         {/* add house database button */}
-        <AddButton setOpen={setOpen} text="Add Houses" />
+        <div className="p-4">
+          <AddButton setOpen={setOpen} text="Add Houses" />
         <HouseDatabaseDialogField
           open={open}
           onOpenChange={setOpen}
@@ -56,6 +57,7 @@ function HouseDatabase() {
           managerOptions={["Dianne Russell", "John Smith", "Sarah Connor"]}
           onSubmit={onSubmit}
         />
+        </div>
       </section>
 
       <section className="p-4 bg-[#e6eaef] rounded-[20px]">

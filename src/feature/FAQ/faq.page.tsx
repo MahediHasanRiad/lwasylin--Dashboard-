@@ -7,7 +7,7 @@ import { FAQdata } from "./data/faq-data";
 
 function FAQpage() {
   return (
-    <section>
+    <section className="p-4">
       {/* top bar  */}
       <div>
         <TopBar

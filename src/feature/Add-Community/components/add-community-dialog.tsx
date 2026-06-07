@@ -75,7 +75,7 @@ export function AddCommunityDialog({
         </DialogTrigger>
       )}
 
-      <DialogContent className="sm:max-w-sm">
+      <DialogContent className="max-w-2xl">
         <DialogHeader>
           <DialogTitle>Add Community</DialogTitle>
         </DialogHeader>

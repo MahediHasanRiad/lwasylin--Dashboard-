@@ -8,9 +8,9 @@ function WorkPage() {
   const onChangeHandler = () => {};
 
   return (
-    <section>
+    <section >
       {/* top bar  */}
-      <section>
+      <section className="p-4">
         <TopBar
           title="Dashboard Overview"
           description="Welcome back! Here's yours system overview"

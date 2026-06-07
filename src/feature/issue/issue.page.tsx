@@ -7,7 +7,7 @@ import HousingTableViewField from "../House-Database(Assets)/components/housing-
 
 function IssuePage() {
   return (
-    <section>
+    <section className="p-4">
       {/* top bar  */}
       <div className="flex justify-between items-center">
         <TopBar

@@ -20,7 +20,7 @@ function SettingPage() {
 
   return (
     <section>
-      <section>
+      <section className="p-4">
         {/* top bar  */}
         <TopBar
           title="Update Profile"

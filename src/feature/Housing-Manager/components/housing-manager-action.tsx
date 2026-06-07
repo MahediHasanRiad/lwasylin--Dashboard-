@@ -32,7 +32,7 @@ export function HousingManagerActionBtn({
           </button>
         </DropdownMenuTrigger>
 
-        <DropdownMenuContent align="start">
+        <DropdownMenuContent align="end">
           {label && <DropdownMenuLabel>{label}</DropdownMenuLabel>}
           <DropdownMenuItem onSelect={() => onValueChange?.("action")}>
             Active

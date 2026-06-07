@@ -16,7 +16,7 @@ function TermsAndCondition() {
   }
 
   return (
-    <section>
+    <section className="p-4">
       {/* top bar  */}
       <div>
         <h1 className="text-4xl">Terms & Condition</h1>

@@ -17,7 +17,7 @@ function PrivacyPolicyPage() {
   }
 
   return (
-    <section>
+    <section className="p-4">
       {/* top bar  */}
       <div>
         <h1 className="text-4xl">Privacy Policy</h1>

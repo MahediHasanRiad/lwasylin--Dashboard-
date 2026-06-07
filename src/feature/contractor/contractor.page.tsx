@@ -15,7 +15,7 @@ function ContractorPage() {
   return (
     <section>
       {/* top bar  */}
-      <section className="flex justify-between">
+      <section className="flex justify-between p-4">
         <div>
           <TopBar
             title="Dashboard Overview"
@@ -24,7 +24,7 @@ function ContractorPage() {
         </div>
         <div className="flex gap-4">
           <div>
-            <PendingBtn handleSubmit={handleSubmit} text="Pending Request" />
+            {/* <PendingBtn handleSubmit={handleSubmit} text="Pending Request" /> */}
           </div>
           <div>
             <AddContractorDialog

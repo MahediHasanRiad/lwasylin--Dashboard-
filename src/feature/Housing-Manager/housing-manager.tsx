@@ -22,19 +22,19 @@ function HousingManager() {
   return (
     <section>
       {/* top bar  */}
-      <section className="flex justify-between">
+      <section className="flex justify-between p-4">
         <div>
           <TopBar
             title="Dashboard Overview"
             description="Welcome back! Here's yours system overview"
           />
         </div>
-        <div className="flex gap-4">
+        <div className="flex gap-4 p-4">
           <div>
-            <PendingBtn
+            {/* <PendingBtn
               handleSubmit={handleSubmit}
               text="Pending Request"
-            />
+            /> */}
           </div>
           <div>
             <AddManagerDialog
