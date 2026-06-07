@@ -45,7 +45,7 @@ function HouseDatabase() {
         />
         {/* add house database button */}
         <div className="p-4">
-          <AddButton setOpen={setOpen} text="Add Houses" />
+        <AddButton setOpen={setOpen} text="Add Houses" />
         <HouseDatabaseDialogField
           open={open}
           onOpenChange={setOpen}

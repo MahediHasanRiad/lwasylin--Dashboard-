@@ -52,7 +52,7 @@ export default function HousingManagerViewField({
                 </td>
 
                 {/* House Manager Community */}
-                <td className="p-4 text-[15px] text-[#475569]">
+                <td className="p-4 pl-6 text-[15px] text-[#475569]">
                   {row.community?.name || "Unassigned"}
                 </td>
 

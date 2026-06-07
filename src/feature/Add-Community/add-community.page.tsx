@@ -6,7 +6,7 @@ import TopBar from "@/feature/Add-Community/components/top-bar";
 import SearchPart from "./components/search-bar";
 import { communityData } from "./data/community-data";
 
-const HeadersData = ['Community name', 'Location name', 'Units', 'House manager', 'Statues', 'Actions']
+// const HeadersData = ['Community name', 'Location name', 'Units', 'House manager', 'Statues', 'Actions']
 
 
 function AddCommunity() {
@@ -41,7 +41,7 @@ function AddCommunity() {
 
         {/* table part  */}
         <section className="w-full mt-4">
-          <TableViewField data={communityData} headersData={HeadersData} />
+          <TableViewField data={communityData} />
         </section>
 
         {/* pagination  */}

@@ -3,10 +3,8 @@ import { ActionBtnField } from "./action-btn";
 
 export default function TableViewField({
   data,
-  headersData,
 }: {
   data: any;
-  headersData: string[];
 }) {
   const selectHandler = (data) => {
     console.log(data);
@@ -19,14 +17,24 @@ export default function TableViewField({
           {/* Table Header Row */}
           <thead>
             <tr className="bg-[#f4f7fa] border-b border-[#e2e8f0] text-md">
-              {headersData.map((item, i) => (
-                <th
-                  key={i}
-                  className="p-4 pl-6 font-secondary font-medium tracking-wide text-[#1e293b] uppercase"
-                >
-                  {item}
-                </th>
-              ))}
+              <th className="p-4 pl-6 font-secondary font-medium tracking-wide text-[#1e293b] uppercase">
+                Community name
+              </th>
+              <th className="p-4 pl-6 font-secondary font-medium tracking-wide text-[#1e293b] uppercase">
+                Location name
+              </th>
+              <th className="p-4 pl-6 font-secondary text-center font-medium tracking-wide text-[#1e293b] uppercase">
+                Units
+              </th>
+              <th className="p-4 pl-6 font-secondary text-start font-medium tracking-wide text-[#1e293b] uppercase">
+                House manager
+              </th>
+              <th className="p-4 pl-6 font-secondary text-center font-medium tracking-wide text-[#1e293b] uppercase">
+                Statues
+              </th>
+              <th className="p-4 pl-6 font-secondary text-center font-medium tracking-wide text-[#1e293b] uppercase">
+                Actions
+              </th>
             </tr>
           </thead>
 
@@ -47,19 +55,19 @@ export default function TableViewField({
                 </td>
 
                 {/* Units */}
-                <td className="p-4 text-[15px] text-[#475569]">
+                <td className="p-4 text-[15px] text-center text-[#475569]">
                   {row._count.properties}
                 </td>
 
                 {/* House Manager */}
-                <td className="p-4 text-[15px] text-[#475569]">
+                <td className="p-4 text-start text-[15px] text-[#475569]">
                   {row.manager}
                 </td>
 
                 {/* Status Pills Block */}
-                <td className="p-4">
+                <td className="p-4 text-center">
                   <span
-                    className={`inline-flex items-center justify-center px-3 py-1 text-xs font-semibold rounded-full border ${
+                    className={`inline-flex text-center items-center justify-center px-3 py-1 text-xs font-semibold rounded-full border ${
                       row.isActive === true
                         ? "bg-[#dcfce7] text-[#15803d] border-[#bbf7d0]"
                         : "bg-[#fef9c3] text-[#ca8a04] border-[#fef08a]"
@@ -70,12 +78,12 @@ export default function TableViewField({
                 </td>
 
                 {/* Action Row Interactions Button */}
-                <td className=" text-center -translate-y-1/12 ">
-                  <ActionBtnField
-                    Icon={MoreVertical}
-                    // defaultValue={""}
-                    onValueChange={selectHandler}
-                  />
+                <td className="flex items-center justify-center w-full -translate-y-1/12 mt-3">
+                    <ActionBtnField
+                      Icon={MoreVertical}
+                      // defaultValue={""}
+                      onValueChange={selectHandler}
+                    />
                 </td>
               </tr>
             ))}

@@ -20,14 +20,24 @@ export default function ContractorTableView({
           {/* Table Header Row */}
           <thead>
             <tr className="bg-[#f4f7fa] border-b border-[#e2e8f0] text-md">
-              {headersData.map((item, i) => (
-                <th
-                  key={i}
-                  className="p-4 pl-6 font-secondary font-medium tracking-wide text-[#1e293b] uppercase"
-                >
-                  {item}
-                </th>
-              ))}
+              <th className="p-4 pl-6 font-secondary font-medium tracking-wide text-[#1e293b] uppercase">
+                Vendor
+              </th>
+              <th className="p-4 pl-6 font-secondary font-medium tracking-wide text-[#1e293b] uppercase">
+                Contact
+              </th>
+              <th className="p-4 pl-6 font-secondary  font-medium tracking-wide text-[#1e293b] uppercase">
+                Email
+              </th>
+              <th className="p-4 pl-6 font-secondary text-start font-medium tracking-wide text-[#1e293b] uppercase">
+                Skill / Service
+              </th>
+              <th className="p-4 pl-6 font-secondary text-center font-medium tracking-wide text-[#1e293b] uppercase">
+                Status
+              </th>
+              <th className="p-4 pl-6 font-secondary text-center font-medium tracking-wide text-[#1e293b] uppercase">
+                Actions
+              </th>
             </tr>
           </thead>
 
@@ -50,12 +60,12 @@ export default function ContractorTableView({
                 </td>
 
                 {/* House Manager */}
-                <td className="p-4 text-[15px] text-[#475569]">
+                <td className="p-4 pl-6 text-[15px] text-[#475569]">
                   {row.specialty}
                 </td>
 
                 {/* Status Pills Block */}
-                <td className="p-4">
+                <td className="p-4 text-center">
                   <span
                     className={`inline-flex items-center justify-center px-3 py-1 text-xs font-semibold rounded-full border ${
                       row.user.status === "ACTIVE"
@@ -68,7 +78,7 @@ export default function ContractorTableView({
                 </td>
 
                 {/* Action Row Interactions Button */}
-                <td className="p-4 pr-6 text-center -translate-y-1/12">
+                <td className="flex items-center justify-center w-full -translate-y-1/12 mt-3">
                   <ContractorActionBtn
                     Icon={MoreVertical}
                     // defaultValue={""}
