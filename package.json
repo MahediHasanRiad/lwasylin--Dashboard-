@@ -1,0 +1,68 @@
+{
+  "name": "power--dashboard-project-",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "eslint .",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@fontsource-variable/geist": "^5.2.8",
+    "@platejs/basic-nodes": "^53.0.0",
+    "@radix-ui/react-dropdown-menu": "^2.1.16",
+    "@radix-ui/react-toolbar": "^1.1.11",
+    "@reduxjs/toolkit": "^2.12.0",
+    "@tailwindcss/vite": "^4.3.0",
+    "@tinymce/tinymce-react": "^6.3.0",
+    "@tiptap/extension-bold": "^3.25.0",
+    "@tiptap/extension-text-style": "^3.25.0",
+    "@tiptap/pm": "^3.25.0",
+    "@tiptap/react": "^3.25.0",
+    "@tiptap/starter-kit": "^3.25.0",
+    "@types/axios": "^0.9.36",
+    "@types/dompurify": "^3.0.5",
+    "axios": "^1.16.1",
+    "class-variance-authority": "^0.7.1",
+    "dompurify": "^3.4.4",
+    "dotenv": "^17.4.2",
+    "jodit": "^4.12.2",
+    "jodit-react": "^5.3.21",
+    "lucide-react": "^1.16.0",
+    "next-themes": "^0.4.6",
+<<<<<<< HEAD
+    "quill": "^2.0.3",
+=======
+>>>>>>> 9ea4cca7c1773206c6a0f1f6524ea5a9666261a1
+    "radix-ui": "^1.4.3",
+    "react": "^19.2.6",
+    "react-dom": "^19.2.6",
+    "react-hook-form": "^7.77.0",
+    "react-redux": "^9.3.0",
+    "react-router": "^7.15.1",
+    "recharts": "^3.8.0",
+    "shadcn": "^4.7.0",
+    "sonner": "^2.0.7",
+    "tailwind-scrollbar-hide": "^4.0.0",
+    "tailwindcss": "^4.3.0",
+    "tinymce": "^5.10.9",
+    "tw-animate-css": "^1.4.0",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/node": "^24.12.4",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^5.0.4",
+    "eslint": "^10.3.0",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "eslint-plugin-react-refresh": "^0.5.2",
+    "globals": "^17.6.0",
+    "typescript": "~6.0.2",
+    "typescript-eslint": "^8.59.2",
+    "vite": "^7.1.7"
+  }
+}
